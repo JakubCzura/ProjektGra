@@ -1,7 +1,5 @@
-# ogólna klasa planszy
 import pygame, os
 import game_module as gm
-import Player, Item, Level, Level1, Platform
 
 # ogólna klasa planszy
 class Level:
