@@ -1,54 +1,6 @@
-#import pygame, os
-#import GameModule as gm
-#import Player, Item, Level, Level1, Platform
-
-#pygame.init()
-
-## centrowanie okna
-#os.environ["SDL_VIDEO_CENTERED"] = "1"
-
-## tworzenie okna gry
-#screen = pygame.display.set_mode(gm.SIZESCREEN)
-#clock = pygame.time.Clock()
-
-
-##konkretyzacja obiekt�w
-#player = Player(gm.KAPITAN_R)
-#player.rect.left = 150
-#player.rect.bottom = gm.HEIGHT - 70
-#current_level = Level_1(player)
-#player.level = current_level
-
-
-#window_open = True
-##p�tla gry
-#while window_open:
-#    screen.fill(gm.LIGHTBLUE)
-#    for event in pygame.event.get():
-#        if event.type == pygame.QUIT:
-#            window_open = False
-#        elif event.type == pygame.KEYDOWN:
-#            if event.key == pygame.K_ESCAPE:
-#                window_open = False
-#        player.get_event(event)
-
-#    # aktualziacja i rysowanie obiekt�w
-#    player.update()
-#    current_level.update()
-
-#    player.draw(screen)
-#    current_level.draw(screen)
-
-
-#    #aktualizacja okna gry
-#    pygame.display.flip()
-#    clock.tick(30)
-
-#pygame.quit()
-
 import pygame, os
 import game_module as gm
-import Player
+import Player, Pltform
 
 pygame.init()
 
@@ -60,34 +12,6 @@ screen = pygame.display.set_mode(gm.SIZESCREEN)
 clock = pygame.time.Clock()
 
 
-
-
-
-
-class Pltform(pygame.sprite.Sprite):
-    def __init__(self, image_list, width, height, pos_x, pos_y):
-        super().__init__()
-        self.image_list = image_list
-        self.width = width
-        self.height = height
-        self.image = pygame.surface.Surface([self.width, self.height])
-        self.rect = self.image.get_rect()
-        self.rect.x = pos_x
-        self.rect.y = pos_y
-
-    def draw(self, surface):
-        # self.image.fill(gm.DARKGREEN)
-        # surface.blit(self.image, self.rect)
-
-        if self.width == 70:
-            surface.blit(self.image_list[0], self.rect)
-        else:
-            surface.blit(self.image_list[1], self.rect)
-            for i in range(70, self.width-70, 70):
-                surface.blit(self.image_list[2], [self.rect.x + i,
-                                                  self.rect.y])
-            surface.blit(self.image_list[3], [self.rect.x + self.width - 70,
-                                              self.rect.y])
 
 
 class Item(pygame.sprite.Sprite):
@@ -148,7 +72,7 @@ class Level_1(Level):
                          [70, 70, 1000, 370]]
 
         for cor in platforms_cor:
-            self.set_of_platforms.add(Pltform(gm.GRASS_LIST, *cor))
+            self.set_of_platforms.add(Pltform.Pltform(gm.GRASS_LIST, *cor))
 
     def _create_items(self):
         shotgun = Item(gm.SHOTGUN2, 'shotgun', 700, 620)

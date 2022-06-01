@@ -1,6 +1,6 @@
 import pygame, os
 import game_module as gm
-import Player, Item, Level, Level1, Platform
+import Player
 
 class Pltform(pygame.sprite.Sprite):
     def __init__(self, image_list, width, height, pos_x, pos_y):
