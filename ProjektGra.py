@@ -1,6 +1,6 @@
 import pygame, os
 import game_module as gm
-import Player, Platform
+import Player, Platform, Item
 
 pygame.init()
 
@@ -14,13 +14,7 @@ clock = pygame.time.Clock()
 
 
 
-class Item(pygame.sprite.Sprite):
-    def __init__(self, image, name, pos_center_x, pos_center_y):
-        super().__init__()
-        self.image = image
-        self.rect = self.image.get_rect()
-        self.name = name
-        self.rect.center = [pos_center_x, pos_center_y]
+
 
 # og�lna klasa planszy
 class Level:
@@ -75,7 +69,7 @@ class Level_1(Level):
             self.set_of_platforms.add(Platform.Platform(gm.GRASS_LIST, *cor))
 
     def _create_items(self):
-        shotgun = Item(gm.SHOTGUN2, 'shotgun', 700, 620)
+        shotgun = Item.Item(gm.SHOTGUN2, 'shotgun', 700, 620)
         self.set_of_items.add(shotgun)
 
 
