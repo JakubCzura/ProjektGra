@@ -1,6 +1,6 @@
 import pygame, os
-import GameModule as gm
-import Player, Item, Level, Level1, Platform
+import game_module as gm
+
 
 class Player(pygame.sprite.Sprite):
     def __init__(self, image):
