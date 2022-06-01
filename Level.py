@@ -1,8 +1,9 @@
 # ogólna klasa planszy
 import pygame, os
-import GameModule as GM
+import GameModule as gm
 import Player, Item, Level, Level1, Platform
 
+# ogólna klasa planszy
 class Level:
     def __init__(self, player):
         self.player = player
@@ -36,4 +37,3 @@ class Level:
 
         for i in self.set_of_items:
             i.rect.x += shift_x
-
