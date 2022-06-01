@@ -22,6 +22,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="GameModule.py" />
+    <Compile Include="Item.py" />
+    <Compile Include="Level.py" />
+    <Compile Include="Level1.py" />
+    <Compile Include="Platform.py" />
     <Compile Include="Player.py" />
     <Compile Include="ProjektGra.py" />
   </ItemGroup>
