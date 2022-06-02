@@ -17,7 +17,7 @@ path = 'images'
 
 file_names = sorted(os.listdir(path))
 
-file_names.remove('background.png')
+#file_names.remove('background.png')
 BACKGROUND = pygame.image.load(os.path.join(path, 'background.png')).convert()
 
 

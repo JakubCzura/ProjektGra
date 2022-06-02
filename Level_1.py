@@ -22,4 +22,7 @@ class Level_1(Level.Level):
 
     def _create_items(self):
         shotgun = Item.Item(gm.SHOTGUN2, 'shotgun', 700, 620)
-        self.set_of_items.add(shotgun)
+        shotgun2 = Item.Item(gm.SHOTGUN2, 'shotgun', 750, 620)
+        coin = Item.Item(gm.COIN, 'coin', 850, 520)
+        self.set_of_items.add(shotgun, shotgun2, coin)
+        

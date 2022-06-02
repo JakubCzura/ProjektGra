@@ -117,6 +117,9 @@ class Player(pygame.sprite.Sprite):
             if item.name == 'shotgun':
                 self.eq[item.name] = 1
                 item.kill()
+            if item.name == 'coin':
+                self.eq[item.name] = 1
+                item.kill()
 
         print(self.eq)
 

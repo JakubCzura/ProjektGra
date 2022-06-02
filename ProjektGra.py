@@ -12,10 +12,6 @@ screen = pygame.display.set_mode(gm.SIZESCREEN)
 clock = pygame.time.Clock()
 
 
-
-
-
-
 #konkretyzacja obiekt�w
 player = Player.Player(gm.KAPITAN_R)
 player.rect.left = 150
