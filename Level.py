@@ -1,13 +1,14 @@
 import pygame, os
 import game_module as gm
 
-# ogólna klasa planszy
+# ogï¿½lna klasa planszy
 class Level:
     def __init__(self, player):
         self.player = player
         self.set_of_platforms = pygame.sprite.Group()
         self.set_of_items = pygame.sprite.Group()
         self.world_shift = 0
+        #self.world_shift_y = 0
 
 
     def update(self):
@@ -29,9 +30,12 @@ class Level:
 
     def _shift_world(self, shift_x):
         self.world_shift += shift_x
+        #self.world_shift_y += shift_y
 
         for p in self.set_of_platforms:
             p.rect.x += shift_x
+            #p.rect.y += shift_y
 
         for i in self.set_of_items:
             i.rect.x += shift_x
+            #i.rect.x += shift_y

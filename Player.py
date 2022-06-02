@@ -10,7 +10,10 @@ class Player(pygame.sprite.Sprite):
         self.movement_x = 0
         self.movement_y = 0
         self.rotate_left = False
+        self.rotate_down = False
         self.press_right = False
+        self.press_up = False
+        self.press_down = False
         self.press_left = False
         self._count = 0
         self.level = None
@@ -18,6 +21,14 @@ class Player(pygame.sprite.Sprite):
 
     def draw(self, surface):
         surface.blit(self.image, self.rect)
+
+    def turn_up(self):
+        self.movement_y = -6
+        self.rotate_down = False
+
+    def turn_down(self):
+        self.movement_y = 6
+        self.rotate_down = True
 
     def turn_right(self):
         self.movement_x = 6
@@ -33,22 +44,21 @@ class Player(pygame.sprite.Sprite):
     def stop_y(self):
         self.movement_y = 0
 
-    def jump(self):
-        self.rect.y += 2
-        colliding_platfoms = pygame.sprite.spritecollide(
-            self, self.level.set_of_platforms,False)
-        self.rect.y -= 2
-        if colliding_platfoms:
-            self.movement_y = -15
+    #def jump(self):
+    #    self.rect.y += 2
+    #    colliding_platfoms = pygame.sprite.spritecollide(
+    #        self, self.level.set_of_platforms,False)
+    #    self.rect.y -= 2
+    #    if colliding_platfoms:
+    #        self.movement_y = -15
 
     def update(self):
         # grawitacja
-        self._gravitation()
+        #self._gravitation()
 
 
         # ruch w poziomie
         self.rect.x += self.movement_x
-
 
         # aniamcja
         if self.movement_x > 0:
@@ -110,6 +120,13 @@ class Player(pygame.sprite.Sprite):
         print(self.eq)
 
     def get_event(self, event):
+     
+        #K_UP                 
+        #K_DOWN                
+        #K_RIGHT               
+        #K_LEFT   
+        
+        #keydown jeśli klawisz jest wciśnięty
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_RIGHT:
                 self.press_right = True
@@ -118,22 +135,43 @@ class Player(pygame.sprite.Sprite):
                 self.press_left = True
                 self.turn_left()
             if event.key == pygame.K_UP:
-                self.jump()
+                self.press_up = True
+                self.turn_up()
+            if event.key == pygame.K_DOWN:
+                self.press_down = True
+                self.turn_down()
+
+        #keyup jeśli klawisz się zwalnia
         if event.type == pygame.KEYUP:
             if event.key == pygame.K_RIGHT:
-                if self.press_left:
-                    self.turn_left()
-                else:
-                    self.stop_x()
-                    self.image = gm.KAPITAN_R
-                self.press_right = False
+                self.press_right = True
+                self.turn_right()
             if event.key == pygame.K_LEFT:
-                if self.press_right:
-                    self.turn_right()
-                else:
-                    self.stop_x()
-                    self.image = gm.KAPITAN_L
-                self.press_left = False
+                self.press_left = True
+                self.turn_left()
+            if event.key == pygame.K_UP:
+                self.press_up = True
+                self.turn_up()
+            if event.key == pygame.K_DOWN:
+                self.press_down = True
+                self.turn_down()
+            
+        
+        #if event.type == pygame.KEYUP:
+        #    if event.key == pygame.K_RIGHT:
+        #        if self.press_left:
+        #            self.turn_left()
+        #        else:
+        #            self.stop_x()
+        #            self.image = gm.KAPITAN_R
+        #        self.press_right = False
+        #    if event.key == pygame.K_LEFT:
+        #        if self.press_right:
+        #            self.turn_right()
+        #        else:
+        #            self.stop_x()
+        #            self.image = gm.KAPITAN_L
+        #        self.press_left = False
 
 
     def _move(self, image_list):
@@ -141,8 +179,8 @@ class Player(pygame.sprite.Sprite):
 
         self._count = (self._count + 1) % 32
 
-    def _gravitation(self):
-        if self.movement_y == 0:
-            self.movement_y = 2
-        else:
-            self.movement_y += 0.35
+    #def _gravitation(self):
+    #    if self.movement_y == 0:
+    #        self.movement_y = 2
+    #    else:
+    #        self.movement_y += 0.35
