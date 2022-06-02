@@ -1,7 +1,7 @@
 import pygame, os
 import game_module as gm
 
-# ogólna klasa planszy
+# ogï¿½lna klasa planszy
 class Level:
     def __init__(self, player):
         self.player = player
