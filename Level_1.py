@@ -15,6 +15,7 @@ class Level_1(Level.Level):
                          [1000*70, 70, 200, gm.HEIGHT-740],
                          [70, 70, 1000, 370],
                          ]
+        
 
         for cor in platforms_cor:
             self.set_of_platforms.add(Platform.Platform(gm.BORDER_LIST, *cor))

@@ -12,23 +12,22 @@ class Level:
 
 
     def update(self):
-        if self.player.rect.right >= 500:
-            diff = self.player.rect.right - 500
-            self.player.rect.right = 500
+        if self.player.rect.right >= 900:
+            diff = self.player.rect.right - 900
+            self.player.rect.right = 900
             self._shift_world(-diff)
-        if self.player.rect.left <= 150:
-            diff = 150 - self.player.rect.left
-            self.player.rect.left = 150
+        if self.player.rect.left <= 450:
+            diff = 450 - self.player.rect.left
+            self.player.rect.left = 450
             self._shift_world(diff)
-
-        if self.player.rect.top <= 150:
-            diff = self.player.rect.top - 150
-            self.player.rect.top = 150
+        if self.player.rect.top >= 550:
+            diff = self.player.rect.top - 550
+            self.player.rect.top = 550
             self._shift_world_y(-diff)
-        if self.player.rect.bottom <= 150:
-            diff = 150 - self.player.rect.bottom
-            self.player.rect.bottom = 150
-            self._shift_world(diff)
+        if self.player.rect.bottom <= 200:
+            diff = 200 - self.player.rect.bottom
+            self.player.rect.bottom = 200
+            self._shift_world_y(diff)
 
     def draw(self, surface):
         for p in self.set_of_platforms:
