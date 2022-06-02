@@ -16,7 +16,7 @@ class Level_1(Level.Level):
                          [70, 70, 1000, 370]]
 
         for cor in platforms_cor:
-            self.set_of_platforms.add(Platform.Platform(gm.GRASS_LIST, *cor))
+            self.set_of_platforms.add(Platform.Platform(gm.BORDER_LIST, *cor))
 
     def _create_items(self):
         shotgun = Item.Item(gm.SHOTGUN2, 'shotgun', 700, 620)
