@@ -11,9 +11,10 @@ class Level_1(Level.Level):
 
 
     def _create_platforms(self):
-        platforms_cor = [[15*70, 70, 70, gm.HEIGHT - 70],
-                         [4*70, 70, 200, 370],
-                         [70, 70, 1000, 370]]
+        platforms_cor = [[1000*70, 70, 70, gm.HEIGHT - 70],
+                         [1000*70, 70, 200, gm.HEIGHT-740],
+                         [70, 70, 1000, 370],
+                         ]
 
         for cor in platforms_cor:
             self.set_of_platforms.add(Platform.Platform(gm.BORDER_LIST, *cor))
