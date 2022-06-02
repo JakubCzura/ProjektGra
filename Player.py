@@ -95,17 +95,17 @@ class Player(pygame.sprite.Sprite):
             self.movement_y = 0
 
         # zmiana grafiki gdy gracz skaka i spada
-        if self.movement_y > 0:
-            if self.rotate_left:
-                self.image = gm.KAPITAN_L
-            else:
-                self.image = gm.KAPITAN_R
+        #if self.movement_y > 0:
+        #    if self.rotate_left:
+        #        self.image = gm.KAPITAN_L
+        #    else:
+        #        self.image = gm.KAPITAN_R
 
-        if self.movement_y < 0:
-            if self.rotate_left:
-                self.image = gm.KAPITAN_L
-            else:
-                self.image = gm.KAPITAN_R
+        #if self.movement_y < 0:
+        #    if self.rotate_left:
+        #        self.image = gm.KAPITAN_L
+        #    else:
+        #        self.image = gm.KAPITAN_R
 
 
         # kolizja z przedmiotami
