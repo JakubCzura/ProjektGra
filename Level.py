@@ -12,13 +12,13 @@ class Level:
 
 
     def update(self):
-        if self.player.rect.right >= 900:
-            diff = self.player.rect.right - 900
-            self.player.rect.right = 900
+        if self.player.rect.right >= 1000:
+            diff = self.player.rect.right - 1000
+            self.player.rect.right = 1000
             self._shift_world(-diff)
-        if self.player.rect.left <= 450:
-            diff = 450 - self.player.rect.left
-            self.player.rect.left = 450
+        if self.player.rect.left <= 350:
+            diff = 350 - self.player.rect.left
+            self.player.rect.left = 350
             self._shift_world(diff)
         if self.player.rect.top >= 550:
             diff = self.player.rect.top - 550

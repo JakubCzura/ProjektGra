@@ -18,24 +18,25 @@ class Player(pygame.sprite.Sprite):
         self._count = 0
         self.level = None
         self.eq = {}
+        self.speed = 4
 
     def draw(self, surface):
         surface.blit(self.image, self.rect)
 
     def turn_up(self):
-        self.movement_y = -6
+        self.movement_y = -self.speed
         self.rotate_down = False
 
     def turn_down(self):
-        self.movement_y = 6
+        self.movement_y = self.speed
         self.rotate_down = True
 
     def turn_right(self):
-        self.movement_x = 6
+        self.movement_x = self.speed
         self.rotate_left = False
 
     def turn_left(self):
-        self.movement_x = -6
+        self.movement_x = -self.speed
         self.rotate_left = True
 
     def stop_x(self):
