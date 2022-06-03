@@ -45,7 +45,12 @@ class Player(pygame.sprite.Sprite):
     def stop_y(self):
         self.movement_y = 0
 
-    #def jump(self):
+    def shoot(self):
+        if self.eq.get('shotgun', 0) and len(self.level.set_of_bullets) < 3 :
+            self.level.set_of_bullets.add(
+                Bullet(gm.BULLET_LIST, self.rotate_left, self.rect.centerx, self.rect.centery + 20))
+    
+            #def jump(self):
     #    self.rect.y += 2
     #    colliding_platfoms = pygame.sprite.spritecollide(
     #        self, self.level.set_of_platforms,False)
@@ -66,6 +71,7 @@ class Player(pygame.sprite.Sprite):
             self._move(gm.PLAYER_WALK_LIST_R)
         if self.movement_x < 0:
             self._move(gm.PLAYER_WALK_LIST_L)
+        
 
         colliding_platfoms = pygame.sprite.spritecollide(
             self, self.level.set_of_platforms,False)

@@ -30,7 +30,6 @@ PLAYER_WALK_LIST_R = [KAPITAN_R, KAPITAN_R, KAPITAN_R,
                       KAPITAN_R, KAPITAN_R, KAPITAN_R,
                       KAPITAN_R, KAPITAN_R]
 
-
 PLAYER_WALK_LIST_L = [KAPITAN_L, KAPITAN_L, KAPITAN_L,
                       KAPITAN_L, KAPITAN_L, KAPITAN_L,
                       KAPITAN_L, KAPITAN_L]
