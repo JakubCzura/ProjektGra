@@ -7,6 +7,8 @@ class Level:
         self.player = player
         self.set_of_platforms = pygame.sprite.Group()
         self.set_of_items = pygame.sprite.Group()
+        self.set_of_bullets = pygame.sprite.Group()
+        self.set_of_dzida_bullets = pygame.sprite.Group()
         self.world_shift = 0
         self.world_shift_y = 0
 
@@ -29,11 +31,26 @@ class Level:
             self.player.rect.bottom = 200
             self._shift_world_y(diff)
 
+        self.set_of_bullets.update()
+        self.set_of_dzida_bullets.update()
+
+        pygame.sprite.groupcollide(self.set_of_bullets, self.set_of_platforms, True, False)
+        for b in self.set_of_bullets:
+            if b.rect.left > gm.WIDTH or b.rect.right < 0:
+                b.kill()
+
+        pygame.sprite.groupcollide(self.set_of_dzida_bullets, self.set_of_platforms, True, False)
+        for d in self.set_of_dzida_bullets:
+            if d.rect.left > gm.WIDTH or d.rect.right < 0:
+                d.kill()
+
     def draw(self, surface):
         for p in self.set_of_platforms:
             p.draw(surface)
 
         self.set_of_items.draw(surface)
+        self.set_of_bullets.draw(surface)
+        self.set_of_dzida_bullets.draw(surface)
 
     def _shift_world(self, shift_x):
         self.world_shift += shift_x
@@ -43,6 +60,12 @@ class Level:
 
         for i in self.set_of_items:
             i.rect.x += shift_x
+
+        for b in self.set_of_bullets:
+            b.rect.x += shift_x
+
+        for d in self.set_of_dzida_bullets:
+            d.rect.x += shift_x
 
     def _shift_world_y(self, shift_y):
         self.world_shift_y += shift_y

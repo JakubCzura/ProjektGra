@@ -1,5 +1,6 @@
 import pygame, os
 import game_module as gm
+import Bullet
 
 
 class Player(pygame.sprite.Sprite):
@@ -46,9 +47,23 @@ class Player(pygame.sprite.Sprite):
         self.movement_y = 0
 
     def shoot(self):
-        if self.eq.get('shotgun', 0) and len(self.level.set_of_bullets) < 3 :
+        #bronie muszą być poukładane od najlepszej żeby przerywać funkcję, gracz używa najkorzystniejszej broni
+        #if self.eq.get('shotgun', 0) and len(self.level.set_of_bullets) < 3 :
+        if self.eq.get('dzida_laserowa', 0):
             self.level.set_of_bullets.add(
-                Bullet(gm.BULLET_LIST, self.rotate_left, self.rect.centerx, self.rect.centery + 20))
+                Bullet.Bullet(gm.DZIDA_POCISK, self.rotate_left, self.rect.centerx, self.rect.centery))
+            return True
+        if self.eq.get('shotgun', 0):
+            self.level.set_of_bullets.add(
+                Bullet.Bullet(gm.BULLET_LIST, self.rotate_left, self.rect.centerx, self.rect.centery ))
+            return True
+        if self.eq.get('coin', 0):
+            self.level.set_of_bullets.add(
+                Bullet.Bullet(gm.BULLET_LIST, self.rotate_left, self.rect.centerx + 50, self.rect.centery + 50))
+            return True
+
+        
+        
     
             #def jump(self):
     #    self.rect.y += 2
@@ -126,7 +141,9 @@ class Player(pygame.sprite.Sprite):
             if item.name == 'coin':
                 self.eq[item.name] = 1
                 item.kill()
-
+            if item.name == 'dzida_laserowa':
+                self.eq[item.name] = 1
+                item.kill()
         print(self.eq)
 
     def get_event(self, event):
@@ -150,6 +167,8 @@ class Player(pygame.sprite.Sprite):
             if event.key == pygame.K_DOWN:
                 self.press_down = True
                 self.turn_down()
+            if event.key == pygame.K_SPACE:
+                self.shoot()
 
         #keyup jeśli klawisz się zwalnia
         if event.type == pygame.KEYUP:

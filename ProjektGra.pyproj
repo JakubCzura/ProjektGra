@@ -21,6 +21,7 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Bullet.py" />
     <Compile Include="game_module.py" />
     <Compile Include="Item.py" />
     <Compile Include="Level.py" />
