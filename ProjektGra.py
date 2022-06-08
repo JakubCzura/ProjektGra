@@ -11,43 +11,43 @@ pygame.init()
 os.environ["SDL_VIDEO_CENTERED"] = "1"
 
 # tworzenie okna gry
-screen = pygame.display.set_mode(gm.SIZESCREEN)
-clock = pygame.time.Clock()
+Screen = pygame.display.set_mode(gm.SIZESCREEN)
+Clock = pygame.time.Clock()
 
 
 #konkretyzacja obiekt�w
 player = Player.Player(gm.KAPITAN_R)
 player.rect.left = 150
 player.rect.bottom = gm.HEIGHT - 70
-current_level = Level_1.Level_1(player)
-player.level = current_level
+MainLevel = Level_1.Level_1(player)
+player.level = MainLevel
 
 MusicKarabinki = Music.Music('strzały_z_karabinow.wav', -1)
 MusicKarabinki.PlayMusic()
 
-window_open = True
+GameLoop = True
 #p�tla gry
-while window_open:
-    screen.fill(gm.LIGHTBLUE)
+while GameLoop:
+    Screen.fill(gm.LIGHTBLUE)
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
-            window_open = False
+            GameLoop = False
         elif event.type == pygame.KEYDOWN:
             if event.key == pygame.K_ESCAPE:
-                window_open = False
+                GameLoop = False
         player.get_event(event)
 
     # aktualziacja i rysowanie obiekt�w
     player.Update()
-    current_level.Update()
+    MainLevel.Update()
 
-    player.Draw(screen)
-    current_level.draw(screen)
+    player.Draw(Screen)
+    MainLevel.Draw(Screen)
 
    
     #aktualizacja okna gry
     pygame.display.flip()
-    clock.tick(30)
+    Clock.tick(30)
 
 pygame.quit()
 

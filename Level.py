@@ -44,7 +44,7 @@ class Level:
             if d.rect.left > gm.WIDTH or d.rect.right < 0:
                 d.kill()
 
-    def draw(self, surface):
+    def Draw(self, surface):
         for p in self.set_of_platforms:
             p.draw(surface)
 
