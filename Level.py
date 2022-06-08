@@ -75,4 +75,4 @@ class Level:
       
         for i in self.set_of_items:
             i.rect.y += shift_y
-          
+         
