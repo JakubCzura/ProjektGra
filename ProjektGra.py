@@ -3,7 +3,7 @@ import pygame, os
 #from pygame import mixer
 import game_module as gm
 import Music
-import Player, Platform, Item, Level, Level_1
+import Player, Platform, Item, Level, MainLevel
 
 pygame.init()
 
@@ -19,7 +19,7 @@ Clock = pygame.time.Clock()
 player = Player.Player(gm.KAPITAN_R)
 player.rect.left = 150
 player.rect.bottom = gm.HEIGHT - 70
-MainLevel = Level_1.Level_1(player)
+MainLevel = MainLevel.MainLevel(player)
 player.level = MainLevel
 
 MusicKarabinki = Music.Music('strzały_z_karabinow.wav', -1)

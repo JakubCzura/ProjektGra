@@ -3,7 +3,7 @@ import game_module as gm
 import Level, Platform, Item
 
 
-class Level_1(Level.Level):
+class MainLevel(Level.Level):
     def __init__(self, player):
         super().__init__(player)
         self._CreatePlatforms()

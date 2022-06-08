@@ -25,7 +25,7 @@
     <Compile Include="game_module.py" />
     <Compile Include="Item.py" />
     <Compile Include="Level.py" />
-    <Compile Include="Level_1.py" />
+    <Compile Include="MainLevel.py" />
     <Compile Include="Music.py" />
     <Compile Include="Platform.py" />
     <Compile Include="Player.py" />
