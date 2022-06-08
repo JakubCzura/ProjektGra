@@ -14,8 +14,8 @@ class Player(pygame.sprite.Sprite):
         self.rotate_down = False
         self._count = 0
         self.level = None
-        self.eq = {}
         self.speed = 4 #prędkość gracza
+        self.weapon = '' #używana broń
 
     def draw(self, surface):
         surface.blit(self.image, self.rect)
@@ -43,20 +43,16 @@ class Player(pygame.sprite.Sprite):
         self.movement_y = 0
 
     def shoot(self):
-        #bronie muszą być poukładane od najlepszej żeby przerywać funkcję, gracz używa najkorzystniejszej broni
-        #if self.eq.get('shotgun', 0) and len(self.level.set_of_bullets) < 3 :
-        if self.eq.get('dzida_laserowa', 0):
+        if self.weapon == 'dzida_laserowa':
             MusicDzida = Music.Music('strzał_z_dzidy.wav', 0)
             MusicDzida.PlayShoot()
             self.level.set_of_bullets.add(
                 Bullet.Bullet(gm.DZIDA_POCISK, self.rotate_left, self.rect.centerx, self.rect.centery-10, 'dzida_laserowa'))
-            return True
-        if self.eq.get('karabinek', 0):
+        if self.weapon == 'karabinek':
             MusicDzida = Music.Music('strzał_z_karabinu.wav', 0)
             MusicDzida.PlayShoot()
             self.level.set_of_bullets.add(
                 Bullet.Bullet(gm.BULLET_LIST, self.rotate_left, self.rect.centerx , self.rect.centery -10, 'karabinek'))
-            return True
         
 
     def update(self):
@@ -66,9 +62,9 @@ class Player(pygame.sprite.Sprite):
 
         # aniamcja
         if self.movement_x > 0:
-            self._move(gm.PLAYER_RIGHT)
+            self._move(gm.KAPITAN_RIGHT)
         if self.movement_x < 0:
-            self._move(gm.PLAYER_LEFT)
+            self._move(gm.KAPITAN_LEFT)
         
 
         colliding_platfoms = pygame.sprite.spritecollide(
@@ -101,17 +97,16 @@ class Player(pygame.sprite.Sprite):
 
 
         # kolizja z przedmiotami
-        colliding_items = pygame.sprite.spritecollide(
+        weapons = pygame.sprite.spritecollide(
             self, self.level.list_of_weapons, False)
 
-        for item in colliding_items:
-            if item.name == 'karabinek':
-                self.eq[item.name] = 1
-                item.kill()
-            if item.name == 'dzida_laserowa':
-                self.eq[item.name] = 1
-                item.kill()
-        print(self.eq)
+        for weapon in weapons:
+            if weapon.name == 'karabinek':
+                self.weapon = 'karabinek'
+            if weapon.name == 'dzida_laserowa':
+                self.weapon = 'dzida_laserowa'
+
+        print(self.weapon)
 
     def get_event(self, event):
      

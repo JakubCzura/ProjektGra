@@ -1,7 +1,7 @@
-
 # okno główne
 import pygame, os
-SIZESCREEN = WIDTH, HEIGHT = 1366, 740
+
+SIZESCREEN = WIDTH, HEIGHT = 1920, 1080
 
 
 # kolory
@@ -24,9 +24,9 @@ for file_name in file_names:
     globals()[image_name] = pygame.image.load(os.path.join(path, file_name)).convert_alpha(BACKGROUND)
 
 
-PLAYER_RIGHT = KAPITAN_R
+KAPITAN_RIGHT = KAPITAN_R
 
-PLAYER_LEFT= KAPITAN_L
+KAPITAN_LEFT= KAPITAN_L
 
 BORDER_LIST = [BORDER,BORDER,BORDER,BORDER]
 
