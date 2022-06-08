@@ -26,12 +26,14 @@
     <Compile Include="Item.py" />
     <Compile Include="Level.py" />
     <Compile Include="Level_1.py" />
+    <Compile Include="Music.py" />
     <Compile Include="Platform.py" />
     <Compile Include="Player.py" />
     <Compile Include="ProjektGra.py" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="images\" />
+    <Folder Include="music\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
   <!-- Uncomment the CoreCompile target to enable the Build command in

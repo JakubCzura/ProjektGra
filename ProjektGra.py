@@ -1,5 +1,8 @@
 import pygame, os
+#from pygame.locals import *
+#from pygame import mixer
 import game_module as gm
+import Music
 import Player, Platform, Item, Level, Level_1
 
 pygame.init()
@@ -19,6 +22,8 @@ player.rect.bottom = gm.HEIGHT - 70
 current_level = Level_1.Level_1(player)
 player.level = current_level
 
+MusicKarabinki = Music.Music('strzały_z_karabinow.wav', -1)
+MusicKarabinki.PlayMusic()
 
 window_open = True
 #p�tla gry
@@ -39,7 +44,7 @@ while window_open:
     player.draw(screen)
     current_level.draw(screen)
 
-
+   
     #aktualizacja okna gry
     pygame.display.flip()
     clock.tick(30)

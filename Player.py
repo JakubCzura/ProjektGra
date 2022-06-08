@@ -1,7 +1,7 @@
 import pygame, os
 import game_module as gm
 import Bullet
-
+import Music
 
 class Player(pygame.sprite.Sprite):
     def __init__(self, image):
@@ -50,10 +50,14 @@ class Player(pygame.sprite.Sprite):
         #bronie muszą być poukładane od najlepszej żeby przerywać funkcję, gracz używa najkorzystniejszej broni
         #if self.eq.get('shotgun', 0) and len(self.level.set_of_bullets) < 3 :
         if self.eq.get('dzida_laserowa', 0):
+            MusicDzida = Music.Music('strzał_z_dzidy.wav', 0)
+            MusicDzida.PlayShoot()
             self.level.set_of_bullets.add(
                 Bullet.Bullet(gm.DZIDA_POCISK, self.rotate_left, self.rect.centerx, self.rect.centery-10, 'dzida_laserowa'))
             return True
         if self.eq.get('karabinek', 0):
+            MusicDzida = Music.Music('strzał_z_karabinu.wav', 0)
+            MusicDzida.PlayShoot()
             self.level.set_of_bullets.add(
                 Bullet.Bullet(gm.BULLET_LIST, self.rotate_left, self.rect.centerx , self.rect.centery -10, 'karabinek'))
             return True
