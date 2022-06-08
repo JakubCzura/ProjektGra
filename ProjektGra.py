@@ -38,10 +38,10 @@ while window_open:
         player.get_event(event)
 
     # aktualziacja i rysowanie obiekt�w
-    player.update()
-    current_level.update()
+    player.Update()
+    current_level.Update()
 
-    player.draw(screen)
+    player.Draw(screen)
     current_level.draw(screen)
 
    

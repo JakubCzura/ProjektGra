@@ -13,23 +13,23 @@ class Level:
         self.world_shift_y = 0
 
 
-    def update(self):
+    def Update(self):
         if self.player.rect.right >= 1000:
             diff = self.player.rect.right - 1000
             self.player.rect.right = 1000
-            self._shift_world(-diff)
+            self._MoveWorld(-diff)
         if self.player.rect.left <= 350:
             diff = 350 - self.player.rect.left
             self.player.rect.left = 350
-            self._shift_world(diff)
+            self._MoveWorld(diff)
         if self.player.rect.top >= 550:
             diff = self.player.rect.top - 550
             self.player.rect.top = 550
-            self._shift_world_y(-diff)
+            self._MoveWorldY(-diff)
         if self.player.rect.bottom <= 200:
             diff = 200 - self.player.rect.bottom
             self.player.rect.bottom = 200
-            self._shift_world_y(diff)
+            self._MoveWorldY(diff)
 
         self.set_of_bullets.update()
         self.set_of_dzida_bullets.update()
@@ -52,7 +52,7 @@ class Level:
         self.set_of_bullets.draw(surface)
         self.set_of_dzida_bullets.draw(surface)
 
-    def _shift_world(self, shift_x):
+    def _MoveWorld(self, shift_x):
         self.world_shift += shift_x
 
         for p in self.set_of_platforms:
@@ -67,7 +67,7 @@ class Level:
         for d in self.set_of_dzida_bullets:
             d.rect.x += shift_x
 
-    def _shift_world_y(self, shift_y):
+    def _MoveWorldY(self, shift_y):
         self.world_shift_y += shift_y
        
         for p in self.set_of_platforms:

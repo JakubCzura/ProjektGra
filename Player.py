@@ -17,30 +17,30 @@ class Player(pygame.sprite.Sprite):
         self.speed = 4 #prędkość gracza
         self.weapon = '' #używana broń
 
-    def draw(self, surface):
+    def Draw(self, surface):
         surface.blit(self.image, self.rect)
 
-    def turn_up(self):
+    def MoveUp(self):
         self.movement_y = -self.speed
         self.rotate_down = False
 
-    def turn_down(self):
+    def MoveDown(self):
         self.movement_y = self.speed
         self.rotate_down = True
 
-    def turn_right(self):
+    def MoveRight(self):
         self.movement_x = self.speed
         self.rotate_left = False
 
-    def turn_left(self):
+    def TurnLeft(self):
         self.movement_x = -self.speed
         self.rotate_left = True
 
-    def stop_x(self):
-        self.movement_x = 0
+    #def Stop_x(self):
+    #    self.movement_x = 0
 
-    def stop_y(self):
-        self.movement_y = 0
+    #def Stop_y(self):
+    #    self.movement_y = 0
 
     def shoot(self):
         if self.weapon == 'dzida_laserowa':
@@ -55,16 +55,16 @@ class Player(pygame.sprite.Sprite):
                 Bullet.Bullet(gm.BULLET_LIST, self.rotate_left, self.rect.centerx , self.rect.centery -10, 'karabinek'))
         
 
-    def update(self):
+    def Update(self):
 
         # ruch w poziomie
         self.rect.x += self.movement_x
 
         # aniamcja
         if self.movement_x > 0:
-            self._move(gm.KAPITAN_RIGHT)
+            self._Move(gm.KAPITAN_RIGHT)
         if self.movement_x < 0:
-            self._move(gm.KAPITAN_LEFT)
+            self._Move(gm.KAPITAN_LEFT)
         
 
         colliding_platfoms = pygame.sprite.spritecollide(
@@ -118,28 +118,28 @@ class Player(pygame.sprite.Sprite):
         #keydown jeśli klawisz jest wciśnięty
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_RIGHT:
-                self.turn_right()
+                self.MoveRight()
             if event.key == pygame.K_LEFT:
-                self.turn_left()
+                self.TurnLeft()
             if event.key == pygame.K_UP:
-                self.turn_up()
+                self.MoveUp()
             if event.key == pygame.K_DOWN:
-                self.turn_down()
+                self.MoveDown()
             if event.key == pygame.K_SPACE:
                 self.shoot()
 
         #keyup jeśli klawisz się zwalnia
         if event.type == pygame.KEYUP:
             if event.key == pygame.K_RIGHT:
-                self.turn_right()
+                self.MoveRight()
             if event.key == pygame.K_LEFT:
-                self.turn_left()
+                self.TurnLeft()
             if event.key == pygame.K_UP:
-                self.turn_up()
+                self.MoveUp()
             if event.key == pygame.K_DOWN:
-                self.turn_down()
+                self.MoveDown()
             
 
-    def _move(self, image):
+    def _Move(self, image):
         self.image = image
 
