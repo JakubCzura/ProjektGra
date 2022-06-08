@@ -98,7 +98,7 @@ class Player(pygame.sprite.Sprite):
 
         # kolizja z przedmiotami
         weapons = pygame.sprite.spritecollide(
-            self, self.level.list_of_weapons, False)
+            self, self.level.ListOfWeapons, False)
 
         for weapon in weapons:
             if weapon.name == 'karabinek':
