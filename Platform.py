@@ -14,8 +14,6 @@ class Platform(pygame.sprite.Sprite):
         self.rect.y = pos_y
 
     def draw(self, surface):
-         #self.image.fill(gm.DARKGREEN)
-         #surface.blit(self.image, self.rect)
 
         if self.width == 70:
             surface.blit(self.image_list[0], self.rect)

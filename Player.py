@@ -61,26 +61,9 @@ class Player(pygame.sprite.Sprite):
             self.level.set_of_bullets.add(
                 Bullet.Bullet(gm.BULLET_LIST, self.rotate_left, self.rect.centerx , self.rect.centery -10, 'karabinek'))
             return True
-        #if self.eq.get('coin', 0):
-        #    self.level.set_of_bullets.add(
-        #        Bullet.Bullet(gm.BULLET_LIST, self.rotate_left, self.rect.centerx + 50, self.rect.centery + 50))
-        #    return True
-
         
-        
-    
-            #def jump(self):
-    #    self.rect.y += 2
-    #    colliding_platfoms = pygame.sprite.spritecollide(
-    #        self, self.level.set_of_platforms,False)
-    #    self.rect.y -= 2
-    #    if colliding_platfoms:
-    #        self.movement_y = -15
 
     def update(self):
-        # grawitacja
-        #self._gravitation()
-
 
         # ruch w poziomie
         self.rect.x += self.movement_x
@@ -120,23 +103,10 @@ class Player(pygame.sprite.Sprite):
 
             self.movement_y = 0
 
-        # zmiana grafiki gdy gracz skaka i spada
-        #if self.movement_y > 0:
-        #    if self.rotate_left:
-        #        self.image = gm.KAPITAN_L
-        #    else:
-        #        self.image = gm.KAPITAN_R
-
-        #if self.movement_y < 0:
-        #    if self.rotate_left:
-        #        self.image = gm.KAPITAN_L
-        #    else:
-        #        self.image = gm.KAPITAN_R
-
 
         # kolizja z przedmiotami
         colliding_items = pygame.sprite.spritecollide(
-            self, self.level.set_of_items, False)
+            self, self.level.list_of_weapons, False)
 
         for item in colliding_items:
             if item.name == 'karabinek':

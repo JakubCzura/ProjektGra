@@ -25,5 +25,5 @@ class Level_1(Level.Level):
         karabinek2 = Item.Item(gm.KARABINEK, 'karabinek', 750, 620)
         dzida_laserowa = Item.Item(gm.LASEROWA_DZIDA, 'dzida_laserowa', 50, 300)
         dzida_laserowa2 = Item.Item(gm.LASEROWA_DZIDA, 'dzida_laserowa', 350, 520)
-        self.set_of_items.add(karabinek, karabinek2, dzida_laserowa, dzida_laserowa2)
+        self.list_of_weapons.add(karabinek, karabinek2, dzida_laserowa, dzida_laserowa2)
         

@@ -10,9 +10,7 @@ LIGHTBLUE = pygame.color.THECOLORS['lightblue']
 
 screen = pygame.display.set_mode(SIZESCREEN)
 
-# grafika  - wczytywanie grafik
-#path = os.path.join(os.pardir, 'images')
-#print(os.pardir)
+
 path = 'images'
 
 file_names = sorted(os.listdir(path))

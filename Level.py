@@ -6,7 +6,7 @@ class Level:
     def __init__(self, player):
         self.player = player
         self.set_of_platforms = pygame.sprite.Group()
-        self.set_of_items = pygame.sprite.Group()
+        self.list_of_weapons = pygame.sprite.Group()
         self.set_of_bullets = pygame.sprite.Group()
         self.set_of_dzida_bullets = pygame.sprite.Group()
         self.world_shift = 0
@@ -48,7 +48,7 @@ class Level:
         for p in self.set_of_platforms:
             p.draw(surface)
 
-        self.set_of_items.draw(surface)
+        self.list_of_weapons.draw(surface)
         self.set_of_bullets.draw(surface)
         self.set_of_dzida_bullets.draw(surface)
 
@@ -58,7 +58,7 @@ class Level:
         for p in self.set_of_platforms:
             p.rect.x += shift_x
 
-        for i in self.set_of_items:
+        for i in self.list_of_weapons:
             i.rect.x += shift_x
 
         for b in self.set_of_bullets:
@@ -73,6 +73,6 @@ class Level:
         for p in self.set_of_platforms:
             p.rect.y += shift_y
       
-        for i in self.set_of_items:
+        for i in self.list_of_weapons:
             i.rect.y += shift_y
          
