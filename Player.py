@@ -142,9 +142,6 @@ class Player(pygame.sprite.Sprite):
             if item.name == 'karabinek':
                 self.eq[item.name] = 1
                 item.kill()
-            if item.name == 'coin':
-                self.eq[item.name] = 1
-                item.kill()
             if item.name == 'dzida_laserowa':
                 self.eq[item.name] = 1
                 item.kill()
