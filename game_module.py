@@ -24,13 +24,9 @@ for file_name in file_names:
     globals()[image_name] = pygame.image.load(os.path.join(path, file_name)).convert_alpha(BACKGROUND)
 
 
-PLAYER_WALK_LIST_R = [KAPITAN_R, KAPITAN_R, KAPITAN_R,
-                      KAPITAN_R, KAPITAN_R, KAPITAN_R,
-                      KAPITAN_R, KAPITAN_R]
+PLAYER_RIGHT = KAPITAN_R
 
-PLAYER_WALK_LIST_L = [KAPITAN_L, KAPITAN_L, KAPITAN_L,
-                      KAPITAN_L, KAPITAN_L, KAPITAN_L,
-                      KAPITAN_L, KAPITAN_L]
+PLAYER_LEFT= KAPITAN_L
 
 BORDER_LIST = [BORDER,BORDER,BORDER,BORDER]
 

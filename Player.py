@@ -12,14 +12,10 @@ class Player(pygame.sprite.Sprite):
         self.movement_y = 0
         self.rotate_left = False
         self.rotate_down = False
-        self.press_right = False
-        self.press_up = False
-        self.press_down = False
-        self.press_left = False
         self._count = 0
         self.level = None
         self.eq = {}
-        self.speed = 4
+        self.speed = 4 #prędkość gracza
 
     def draw(self, surface):
         surface.blit(self.image, self.rect)
@@ -70,9 +66,9 @@ class Player(pygame.sprite.Sprite):
 
         # aniamcja
         if self.movement_x > 0:
-            self._move(gm.PLAYER_WALK_LIST_R)
+            self._move(gm.PLAYER_RIGHT)
         if self.movement_x < 0:
-            self._move(gm.PLAYER_WALK_LIST_L)
+            self._move(gm.PLAYER_LEFT)
         
 
         colliding_platfoms = pygame.sprite.spritecollide(
@@ -127,16 +123,12 @@ class Player(pygame.sprite.Sprite):
         #keydown jeśli klawisz jest wciśnięty
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_RIGHT:
-                self.press_right = True
                 self.turn_right()
             if event.key == pygame.K_LEFT:
-                self.press_left = True
                 self.turn_left()
             if event.key == pygame.K_UP:
-                self.press_up = True
                 self.turn_up()
             if event.key == pygame.K_DOWN:
-                self.press_down = True
                 self.turn_down()
             if event.key == pygame.K_SPACE:
                 self.shoot()
@@ -144,43 +136,15 @@ class Player(pygame.sprite.Sprite):
         #keyup jeśli klawisz się zwalnia
         if event.type == pygame.KEYUP:
             if event.key == pygame.K_RIGHT:
-                self.press_right = True
                 self.turn_right()
             if event.key == pygame.K_LEFT:
-                self.press_left = True
                 self.turn_left()
             if event.key == pygame.K_UP:
-                self.press_up = True
                 self.turn_up()
             if event.key == pygame.K_DOWN:
-                self.press_down = True
                 self.turn_down()
             
-        
-        #if event.type == pygame.KEYUP:
-        #    if event.key == pygame.K_RIGHT:
-        #        if self.press_left:
-        #            self.turn_left()
-        #        else:
-        #            self.stop_x()
-        #            self.image = gm.KAPITAN_R
-        #        self.press_right = False
-        #    if event.key == pygame.K_LEFT:
-        #        if self.press_right:
-        #            self.turn_right()
-        #        else:
-        #            self.stop_x()
-        #            self.image = gm.KAPITAN_L
-        #        self.press_left = False
 
+    def _move(self, image):
+        self.image = image
 
-    def _move(self, image_list):
-        self.image = image_list[self._count//4]
-
-        self._count = (self._count + 1) % 32
-
-    #def _gravitation(self):
-    #    if self.movement_y == 0:
-    #        self.movement_y = 2
-    #    else:
-    #        self.movement_y += 0.35
