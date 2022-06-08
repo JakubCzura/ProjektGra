@@ -14,21 +14,21 @@ class Level:
 
 
     def Update(self):
-        if self.player.rect.right >= 1000:
-            diff = self.player.rect.right - 1000
-            self.player.rect.right = 1000
+        if self.player.rect.right >= 1300:
+            diff = self.player.rect.right - 1300
+            self.player.rect.right = 1300
             self._MoveWorld(-diff)
         if self.player.rect.left <= 350:
             diff = 350 - self.player.rect.left
             self.player.rect.left = 350
             self._MoveWorld(diff)
-        if self.player.rect.top >= 550:
-            diff = self.player.rect.top - 550
-            self.player.rect.top = 550
+        if self.player.rect.top >= 650:
+            diff = self.player.rect.top - 650
+            self.player.rect.top = 650
             self._MoveWorldY(-diff)
-        if self.player.rect.bottom <= 200:
-            diff = 200 - self.player.rect.bottom
-            self.player.rect.bottom = 200
+        if self.player.rect.bottom <= 300:
+            diff = 300 - self.player.rect.bottom
+            self.player.rect.bottom = 300
             self._MoveWorldY(diff)
 
         self.set_of_bullets.update()
