@@ -21,9 +21,9 @@ class Level_1(Level.Level):
             self.set_of_platforms.add(Platform.Platform(gm.BORDER_LIST, *cor))
 
     def _create_items(self):
-        shotgun = Item.Item(gm.SHOTGUN2, 'shotgun', 700, 620)
-        shotgun2 = Item.Item(gm.SHOTGUN2, 'shotgun', 750, 620)
+        karabinek = Item.Item(gm.KARABINEK, 'karabinek', 700, 620)
+        karabinek = Item.Item(gm.KARABINEK, 'karabinek', 750, 620)
         coin = Item.Item(gm.COIN, 'coin', 850, 520)
         dzida_laserowa = Item.Item(gm.LASEROWA_DZIDA, 'dzida_laserowa', 350, 520)
-        self.set_of_items.add(shotgun, shotgun2, coin, dzida_laserowa)
+        self.set_of_items.add(karabinek, karabinek, coin, dzida_laserowa)
         

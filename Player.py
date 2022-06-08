@@ -51,16 +51,16 @@ class Player(pygame.sprite.Sprite):
         #if self.eq.get('shotgun', 0) and len(self.level.set_of_bullets) < 3 :
         if self.eq.get('dzida_laserowa', 0):
             self.level.set_of_bullets.add(
-                Bullet.Bullet(gm.DZIDA_POCISK, self.rotate_left, self.rect.centerx, self.rect.centery))
+                Bullet.Bullet(gm.DZIDA_POCISK, self.rotate_left, self.rect.centerx, self.rect.centery-10, 'dzida_laserowa'))
             return True
-        if self.eq.get('shotgun', 0):
+        if self.eq.get('karabinek', 0):
             self.level.set_of_bullets.add(
-                Bullet.Bullet(gm.BULLET_LIST, self.rotate_left, self.rect.centerx, self.rect.centery ))
+                Bullet.Bullet(gm.BULLET_LIST, self.rotate_left, self.rect.centerx , self.rect.centery -10, 'karabinek'))
             return True
-        if self.eq.get('coin', 0):
-            self.level.set_of_bullets.add(
-                Bullet.Bullet(gm.BULLET_LIST, self.rotate_left, self.rect.centerx + 50, self.rect.centery + 50))
-            return True
+        #if self.eq.get('coin', 0):
+        #    self.level.set_of_bullets.add(
+        #        Bullet.Bullet(gm.BULLET_LIST, self.rotate_left, self.rect.centerx + 50, self.rect.centery + 50))
+        #    return True
 
         
         
@@ -135,7 +135,7 @@ class Player(pygame.sprite.Sprite):
             self, self.level.set_of_items, False)
 
         for item in colliding_items:
-            if item.name == 'shotgun':
+            if item.name == 'karabinek':
                 self.eq[item.name] = 1
                 item.kill()
             if item.name == 'coin':
