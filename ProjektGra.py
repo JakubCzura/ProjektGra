@@ -22,10 +22,9 @@ player.rect.bottom = gm.HEIGHT - 70
 MainLevel = MainLevel.MainLevel(player)
 player.level = MainLevel
 
-Alien1 = Alien.Alien(gm.ALIEN_LEFT, player)
-Alien1.rect.left = 200
-Alien1.rect.bottom = gm.HEIGHT - 70
-Alien1.level = MainLevel
+Alien1 = Alien.Alien(gm.ALIEN_LEFT, player, 200, gm.HEIGHT-70, MainLevel)
+Alien1.SpawnAlien()
+
 
 MusicKarabinki = Music.Music('strzały_z_karabinow.wav', -1)
 MusicKarabinki.PlayMusic()

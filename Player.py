@@ -13,8 +13,8 @@ class Player(pygame.sprite.Sprite):
         self.isLookingLeft = False
         self.isLookingDown = False
         self.level = None
-        self.speed = 4 #prędkość gracza
-        self.weapon = '' #używana broń
+        self.speed = 4 #predkosc gracza
+        self.weapon = '' #uzywana bron
         self.isAlive = True
 
     def Draw(self, surface):

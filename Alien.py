@@ -6,7 +6,7 @@ import Player
 import math
 
 class Alien(pygame.sprite.Sprite):
-    def __init__(self, image, player):
+    def __init__(self, image, player, left, bottom, level):
         super().__init__()
         self.image = image
         self.rect = self.image.get_rect()
@@ -17,7 +17,9 @@ class Alien(pygame.sprite.Sprite):
         self.speed = 1 #prędkość kosmity
         self.player = player
         self.IsAlive = True
-        self.level = ''
+        self.rect.left = left
+        self.rect.bottom = bottom
+        self.level = level
 
     def Draw(self, surface):
         surface.blit(self.image, self.rect)
@@ -95,4 +97,7 @@ class Alien(pygame.sprite.Sprite):
 
     def _Move(self, image):
         self.image = image
+
+    def SpawnAlien(self):               
+        return Alien(self.image, self.player, self.rect.left, self.rect.bottom, self.level)
 
