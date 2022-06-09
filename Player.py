@@ -8,10 +8,10 @@ class Player(pygame.sprite.Sprite):
         super().__init__()
         self.image = image
         self.rect = self.image.get_rect()
-        self.movement_x = 0
-        self.movement_y = 0
-        self.rotate_left = False
-        self.rotate_down = False
+        self.movementX = 0
+        self.movementY = 0
+        self.isLookingLeft = False
+        self.isLookingDown = False
         self._count = 0
         self.level = None
         self.speed = 4 #prędkość gracza
@@ -21,79 +21,73 @@ class Player(pygame.sprite.Sprite):
         surface.blit(self.image, self.rect)
 
     def MoveUp(self):
-        self.movement_y = -self.speed
-        self.rotate_down = False
+        self.movementY = -self.speed
+        self.isLookingDown = False
 
     def MoveDown(self):
-        self.movement_y = self.speed
-        self.rotate_down = True
+        self.movementY = self.speed
+        self.isLookingDown = True
 
     def MoveRight(self):
-        self.movement_x = self.speed
-        self.rotate_left = False
+        self.movementX = self.speed
+        self.isLookingLeft = False
 
     def TurnLeft(self):
-        self.movement_x = -self.speed
-        self.rotate_left = True
-
-    #def Stop_x(self):
-    #    self.movement_x = 0
-
-    #def Stop_y(self):
-    #    self.movement_y = 0
+        self.movementX = -self.speed
+        self.isLookingLeft = True
 
     def shoot(self):
         if self.weapon == 'dzida_laserowa':
             MusicDzida = Music.Music('strzał_z_dzidy.wav', 0)
             MusicDzida.PlayShoot()
-            self.level.set_of_bullets.add(
-                Bullet.Bullet(gm.DZIDA_POCISK, self.rotate_left, self.rect.centerx, self.rect.centery-10, 'dzida_laserowa'))
+            self.level.DzidaBullets.add(
+                Bullet.Bullet(gm.DZIDA_POCISK, self.isLookingLeft, self.rect.centerx, self.rect.centery-10, 'dzida_laserowa'))
         if self.weapon == 'karabinek':
             MusicDzida = Music.Music('strzał_z_karabinu.wav', 0)
             MusicDzida.PlayShoot()
-            self.level.set_of_bullets.add(
-                Bullet.Bullet(gm.BULLET_LIST, self.rotate_left, self.rect.centerx , self.rect.centery -10, 'karabinek'))
+            self.level.KarabinekBullets.add(
+                Bullet.Bullet(gm.BULLET_LIST, self.isLookingLeft, self.rect.centerx , self.rect.centery -10, 'karabinek'))
         
 
     def Update(self):
 
         # ruch w poziomie
-        self.rect.x += self.movement_x
+        self.rect.x += self.movementX
 
         # aniamcja
-        if self.movement_x > 0:
+        if self.movementX > 0:
             self._Move(gm.KAPITAN_RIGHT)
-        if self.movement_x < 0:
+        if self.movementX < 0:
             self._Move(gm.KAPITAN_LEFT)
         
 
         colliding_platfoms = pygame.sprite.spritecollide(
-            self, self.level.set_of_platforms,False)
+            self, self.level.platforms,False)
         for p in colliding_platfoms:
-            if self.movement_x > 0:
+            if self.movementX > 0:
                 self.rect.right = p.rect.left
-            if self.movement_x < 0:
+            if self.movementX < 0:
                 self.rect.left = p.rect.right
 
 
         # ruch w pionie
-        self.rect.y += self.movement_y
+        self.rect.y += self.movementY
 
         colliding_platfoms = pygame.sprite.spritecollide(
-            self, self.level.set_of_platforms,False)
+            self, self.level.platforms,False)
         for p in colliding_platfoms:
-            if self.movement_y > 0:
+            if self.movementY > 0:
                 self.rect.bottom = p.rect.top
-                if self.movement_x == 0:
-                    if self.rotate_left:
+                if self.movementX == 0:
+                    if self.isLookingLeft:
                         self.image = gm.KAPITAN_L
                     else:
                         self.image = gm.KAPITAN_R
 
-            if self.movement_y < 0:
+            if self.movementY < 0:
                 self.rect.top = p.rect.bottom
 
-            self.movement_y = 0
+            self.movementY = 0
 
 
         # kolizja z przedmiotami

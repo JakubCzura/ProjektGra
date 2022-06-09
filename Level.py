@@ -5,12 +5,12 @@ import game_module as gm
 class Level:
     def __init__(self, player):
         self.player = player
-        self.set_of_platforms = pygame.sprite.Group()
+        self.platforms = pygame.sprite.Group()
         self.ListOfWeapons = pygame.sprite.Group()
-        self.set_of_bullets = pygame.sprite.Group()
-        self.set_of_dzida_bullets = pygame.sprite.Group()
-        self.world_shift = 0
-        self.world_shift_y = 0
+        self.KarabinekBullets = pygame.sprite.Group()
+        self.DzidaBullets = pygame.sprite.Group()
+        self.worldShift = 0
+        self.worldShiftY = 0
 
 
     def Update(self):
@@ -31,48 +31,48 @@ class Level:
             self.player.rect.bottom = 300
             self._MoveWorldY(diff)
 
-        self.set_of_bullets.update()
-        self.set_of_dzida_bullets.update()
+        self.KarabinekBullets.update()
+        self.DzidaBullets.update()
 
-        pygame.sprite.groupcollide(self.set_of_bullets, self.set_of_platforms, True, False)
-        for b in self.set_of_bullets:
+        pygame.sprite.groupcollide(self.KarabinekBullets, self.platforms, True, False)
+        for b in self.KarabinekBullets:
             if b.rect.left > gm.WIDTH or b.rect.right < 0:
                 b.kill()
 
-        pygame.sprite.groupcollide(self.set_of_dzida_bullets, self.set_of_platforms, True, False)
-        for d in self.set_of_dzida_bullets:
+        pygame.sprite.groupcollide(self.DzidaBullets, self.platforms, True, False)
+        for d in self.DzidaBullets:
             if d.rect.left > gm.WIDTH or d.rect.right < 0:
                 d.kill()
 
     def Draw(self, surface):
-        for p in self.set_of_platforms:
+        for p in self.platforms:
             p.draw(surface)
 
         self.ListOfWeapons.draw(surface)
-        self.set_of_bullets.draw(surface)
-        self.set_of_dzida_bullets.draw(surface)
+        self.KarabinekBullets.draw(surface)
+        self.DzidaBullets.draw(surface)
 
-    def _MoveWorld(self, shift_x):
-        self.world_shift += shift_x
+    def _MoveWorld(self, shiftX):
+        self.worldShift += shiftX
 
-        for p in self.set_of_platforms:
-            p.rect.x += shift_x
+        for platform in self.platforms:
+            platform.rect.x += shiftX
 
-        for i in self.ListOfWeapons:
-            i.rect.x += shift_x
+        for weapon in self.ListOfWeapons:
+            weapon.rect.x += shiftX
 
-        for b in self.set_of_bullets:
-            b.rect.x += shift_x
+        for karabinekBullet in self.KarabinekBullets:
+            karabinekBullet.rect.x += shiftX
 
-        for d in self.set_of_dzida_bullets:
-            d.rect.x += shift_x
+        for dzidaBullet in self.DzidaBullets:
+            dzidaBullet.rect.x += shiftX
 
-    def _MoveWorldY(self, shift_y):
-        self.world_shift_y += shift_y
+    def _MoveWorldY(self, shiftY):
+        self.worldShiftY += shiftY
        
-        for p in self.set_of_platforms:
-            p.rect.y += shift_y
+        for platform in self.platforms:
+            platform.rect.y += shiftY
       
-        for i in self.ListOfWeapons:
-            i.rect.y += shift_y
+        for weapon in self.ListOfWeapons:
+            weapon.rect.y += shiftY
          

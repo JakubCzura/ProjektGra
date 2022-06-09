@@ -18,7 +18,7 @@ class MainLevel(Level.Level):
         
         #platforms_cor = []
         for cor in platforms_cor:
-            self.set_of_platforms.add(Platform.Platform(gm.BORDER_LIST, *cor))
+            self.platforms.add(Platform.Platform(gm.BORDER_LIST, *cor))
 
     def _CreateItems(self):
         karabinek = Item.Item(gm.KARABINEK, 'karabinek', 1000, 220)
