@@ -1,3 +1,4 @@
+from asyncio.windows_events import NULL
 from turtle import update
 import pygame, os
 #from pygame.locals import *
@@ -25,6 +26,7 @@ player.rect.bottom = gm.HEIGHT - 70
 MainLevel = MainLevel.MainLevel(player)
 player.level = MainLevel
 
+fps = 30 #liczba klatek na sekunde
 
 MusicKarabinki = Music.Music('strzały_z_karabinow.wav', -1)
 MusicKarabinki.PlayMusic()
@@ -37,6 +39,8 @@ ListOfPlayers = pygame.sprite.Group()
 def AddAlienToList():
     ListOfAliens.add(Alien.Alien(gm.ALIEN_LEFT, player, random.randint(100,1100), random.randint(100,1100), MainLevel))
 
+def AddPlayerToList():
+    ListOfPlayers.add(player)
 
 def UpdateAliens():
     for Alien in ListOfAliens:
@@ -48,10 +52,11 @@ def DrawAliens():
 
 
 AddAlienToList()
-ListOfPlayers.add(player)
+AddPlayerToList()
 GameLoop = True
 
-TimeToSpawnAlien = 0 #poniewaz gra odswieza sie 30 klatek na sekunde to jesli wartosc osiagne 40 to znaczy ze kosmita pojawiac sie bedzie okolo 1,3 sekundy
+TimeToSpawnAlien = 0 #poniewaz gra odswieza sie 30 klatek na sekunde to jesli wartosc osiagne 60 to znaczy ze kosmita pojawiac sie bedzie okolo 2 sekundy
+AmountOfAliens = 0
 
 #petla gry
 while GameLoop:
@@ -67,13 +72,16 @@ while GameLoop:
     # aktualziacja i rysowanie obiektow
     
     TimeToSpawnAlien += 1
-    if TimeToSpawnAlien == 40:
+    if TimeToSpawnAlien == 60:
         AddAlienToList()
+        AmountOfAliens += 1
         TimeToSpawnAlien = 0
 
     pygame.sprite.groupcollide(MainLevel.DzidaBullets, ListOfAliens, True, True)
     pygame.sprite.groupcollide(MainLevel.KarabinekBullets, ListOfAliens, True, True)
-    pygame.sprite.groupcollide(ListOfPlayers, ListOfAliens, True, False)
+    if pygame.sprite.groupcollide(ListOfPlayers, ListOfAliens, True, True) != {}: #jesli zderzy się gracz i kosmita to gra się konczy
+        GameLoop = False
+
    
 
     UpdateAliens()
@@ -81,8 +89,6 @@ while GameLoop:
     
     MainLevel.Update()
     
-
-
     player.Draw(Screen)
 
     DrawAliens()
@@ -92,7 +98,9 @@ while GameLoop:
    
     #aktualizacja okna gry
     pygame.display.flip()
-    Clock.tick(30)
+    Clock.tick(fps)
 
 pygame.quit()
+
+print("Gra skończona")
 
