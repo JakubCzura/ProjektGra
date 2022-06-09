@@ -32,7 +32,7 @@ class Player(pygame.sprite.Sprite):
         self.movementX = self.speed
         self.isLookingLeft = False
 
-    def TurnLeft(self):
+    def MoveLeft(self):
         self.movementX = -self.speed
         self.isLookingLeft = True
 
@@ -114,7 +114,7 @@ class Player(pygame.sprite.Sprite):
             if event.key == pygame.K_RIGHT:
                 self.MoveRight()
             if event.key == pygame.K_LEFT:
-                self.TurnLeft()
+                self.MoveLeft()
             if event.key == pygame.K_UP:
                 self.MoveUp()
             if event.key == pygame.K_DOWN:
@@ -127,7 +127,7 @@ class Player(pygame.sprite.Sprite):
             if event.key == pygame.K_RIGHT:
                 self.MoveRight()
             if event.key == pygame.K_LEFT:
-                self.TurnLeft()
+                self.MoveLeft()
             if event.key == pygame.K_UP:
                 self.MoveUp()
             if event.key == pygame.K_DOWN:
