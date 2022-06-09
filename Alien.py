@@ -2,9 +2,10 @@ import pygame, os
 import game_module as gm
 import Bullet
 import Music
+import Player
 
-class Player(pygame.sprite.Sprite):
-    def __init__(self, image):
+class Alien(pygame.sprite.Sprite):
+    def __init__(self, image, player):
         super().__init__()
         self.image = image
         self.rect = self.image.get_rect()
@@ -12,10 +13,9 @@ class Player(pygame.sprite.Sprite):
         self.movementY = 0
         self.isLookingLeft = False
         self.isLookingDown = False
-        self.level = None
-        self.speed = 4 #prÄ™dkoÅ›Ä‡ gracza
-        self.weapon = '' #uÅ¼ywana broÅ„
-        self.isAlive = True
+        #self.level = None
+        self.speed = 2 #prêdkoœæ gracza
+        self.player = player
 
     def Draw(self, surface):
         surface.blit(self.image, self.rect)
@@ -36,29 +36,21 @@ class Player(pygame.sprite.Sprite):
         self.movementX = -self.speed
         self.isLookingLeft = True
 
-    def shoot(self):
-        if self.weapon == 'dzida_laserowa':
-            MusicDzida = Music.Music('strzaÅ‚_z_dzidy.wav', 0)
-            MusicDzida.PlayShoot()
-            self.level.DzidaBullets.add(
-                Bullet.Bullet(gm.DZIDA_POCISK, self.isLookingLeft, self.rect.centerx, self.rect.centery - 10, 'dzida_laserowa'))
-        if self.weapon == 'karabinek':
-            MusicDzida = Music.Music('strzaÅ‚_z_karabinu.wav', 0)
-            MusicDzida.PlayShoot()
-            self.level.KarabinekBullets.add(
-                Bullet.Bullet(gm.BULLET_LIST, self.isLookingLeft, self.rect.centerx , self.rect.centery - 10, 'karabinek'))
-        
+   
 
     def Update(self):
 
         # ruch w poziomie
         self.rect.x += self.movementX
 
+        # ruch w pionie
+        self.rect.y += self.movementY
+
         # aniamcja
         if self.movementX > 0:
-            self._Move(gm.KAPITAN_RIGHT)
+            self._Move(gm.ALIEN_RIGHT)
         if self.movementX < 0:
-            self._Move(gm.KAPITAN_LEFT)
+            self._Move(gm.ALIEN_LEFT)
         
 
         colliding_platfoms = pygame.sprite.spritecollide(
@@ -69,9 +61,6 @@ class Player(pygame.sprite.Sprite):
             if self.movementX < 0:
                 self.rect.left = p.rect.right
 
-
-        # ruch w pionie
-        self.rect.y += self.movementY
 
         colliding_platfoms = pygame.sprite.spritecollide(
             self, self.level.platforms,False)
@@ -90,27 +79,15 @@ class Player(pygame.sprite.Sprite):
             self.movementY = 0
 
 
-        # kolizja z przedmiotami
-        weapons = pygame.sprite.spritecollide(
-            self, self.level.ListOfWeapons, False)
-
-        for weapon in weapons:
-            if weapon.name == 'karabinek':
-                self.weapon = 'karabinek'
-            if weapon.name == 'dzida_laserowa':
-                self.weapon = 'dzida_laserowa'
-
-        print(self.weapon)
-
-    def get_event(self, event):
+    def get_event(self):
      
         #K_UP                 
         #K_DOWN                
         #K_RIGHT               
         #K_LEFT   
-        
-        #keydown jeÅ›li klawisz jest wciÅ›niÄ™ty
-        if event.type == pygame.KEYDOWN:
+
+        #keydown jeœli klawisz jest wciœniêty
+        if self.player.event.type == pygame.KEYDOWN:
             if event.key == pygame.K_RIGHT:
                 self.MoveRight()
             if event.key == pygame.K_LEFT:
@@ -122,7 +99,7 @@ class Player(pygame.sprite.Sprite):
             if event.key == pygame.K_SPACE:
                 self.shoot()
 
-        #keyup jeÅ›li klawisz siÄ™ zwalnia
+        #keyup jeœli klawisz siê zwalnia
         if event.type == pygame.KEYUP:
             if event.key == pygame.K_RIGHT:
                 self.MoveRight()
@@ -132,7 +109,6 @@ class Player(pygame.sprite.Sprite):
                 self.MoveUp()
             if event.key == pygame.K_DOWN:
                 self.MoveDown()
-            
 
     def _Move(self, image):
         self.image = image
