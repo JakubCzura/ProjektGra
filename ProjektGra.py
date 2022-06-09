@@ -3,7 +3,7 @@ import pygame, os
 #from pygame import mixer
 import game_module as gm
 import Music
-import Player, Platform, Item, Level, MainLevel
+import Player, Platform, Item, Level, MainLevel, Alien
 
 pygame.init()
 
@@ -22,6 +22,10 @@ player.rect.bottom = gm.HEIGHT - 70
 MainLevel = MainLevel.MainLevel(player)
 player.level = MainLevel
 
+Alien1 = Alien.Alien(gm.ALIEN_LEFT, player)
+Alien1.rect.left = 200
+Alien1.rect.bottom = gm.HEIGHT - 70
+
 MusicKarabinki = Music.Music('strzały_z_karabinow.wav', -1)
 MusicKarabinki.PlayMusic()
 
@@ -39,9 +43,12 @@ while GameLoop:
 
     # aktualziacja i rysowanie obiekt�w
     player.Update()
+    Alien1.Update()
     MainLevel.Update()
 
+
     player.Draw(Screen)
+    Alien1.Draw(Screen)
     MainLevel.Draw(Screen)
 
    
