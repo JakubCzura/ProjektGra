@@ -72,7 +72,7 @@ while GameLoop:
 
     pygame.sprite.groupcollide(MainLevel.DzidaBullets, ListOfAliens, True, True)
     pygame.sprite.groupcollide(MainLevel.KarabinekBullets, ListOfAliens, True, True)
-    #pygame.sprite.groupcollide(player, ListOfAliens, True, False)
+    pygame.sprite.groupcollide(player, ListOfAliens, True, False)
     
     UpdateAliens()
     
