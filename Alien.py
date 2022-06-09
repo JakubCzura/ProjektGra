@@ -91,18 +91,6 @@ class Alien(pygame.sprite.Sprite):
                 self.rect.top = p.rect.bottom
 
             self.movementY = 0
-
-
-    #    #keyup jeśli klawisz się zwalnia
-    #    if event.type == pygame.KEYUP:
-    #        if event.key == pygame.K_RIGHT:
-    #            self.MoveRight()
-    #        if event.key == pygame.K_LEFT:
-    #            self.TurnLeft()
-    #        if event.key == pygame.K_UP:
-    #            self.MoveUp()
-    #        if event.key == pygame.K_DOWN:
-    #            self.MoveDown()
    
 
     def _Move(self, image):
