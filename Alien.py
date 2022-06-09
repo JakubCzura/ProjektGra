@@ -60,9 +60,9 @@ class Alien(pygame.sprite.Sprite):
 
         #aniamcja
         if self.movementX > 0:
-            self._Move(gm.KAPITAN_RIGHT)
+            self._Move(gm.ALIEN_RIGHT)
         if self.movementX < 0:
-            self._Move(gm.KAPITAN_LEFT)
+            self._Move(gm.ALIEN_LEFT)
         
 
         colliding_platfoms = pygame.sprite.spritecollide(
