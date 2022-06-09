@@ -41,12 +41,12 @@ class Player(pygame.sprite.Sprite):
             MusicDzida = Music.Music('strzał_z_dzidy.wav', 0)
             MusicDzida.PlayShoot()
             self.level.DzidaBullets.add(
-                Bullet.Bullet(gm.DZIDA_POCISK, self.isLookingLeft, self.rect.centerx, self.rect.centery-10, 'dzida_laserowa'))
+                Bullet.Bullet(gm.DZIDA_POCISK, self.isLookingLeft, self.rect.centerx, self.rect.centery - 10, 'dzida_laserowa'))
         if self.weapon == 'karabinek':
             MusicDzida = Music.Music('strzał_z_karabinu.wav', 0)
             MusicDzida.PlayShoot()
             self.level.KarabinekBullets.add(
-                Bullet.Bullet(gm.BULLET_LIST, self.isLookingLeft, self.rect.centerx , self.rect.centery -10, 'karabinek'))
+                Bullet.Bullet(gm.BULLET_LIST, self.isLookingLeft, self.rect.centerx , self.rect.centery - 10, 'karabinek'))
         
 
     def Update(self):

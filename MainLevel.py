@@ -11,9 +11,11 @@ class MainLevel(Level.Level):
 
 
     def _CreatePlatforms(self):
-        platforms_cor = [[1000*70, 70, 70, gm.HEIGHT - 70],
-                         [1000*70, 70, 200, gm.HEIGHT-740],
-                         [70, 70, 1000, 370],
+        platforms_cor = [[70, 70, 1000, 220],
+                         [70, 70, 750, 620],
+                         [70, 70, 520, 30],
+                         [70, 70, 350, 520],
+                         [70, 70, 550, 520]
                          ]
         
         #platforms_cor = []
