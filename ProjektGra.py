@@ -31,10 +31,11 @@ MusicKarabinki.PlayMusic()
 
 
 ListOfAliens = pygame.sprite.Group()
+ListOfPlayers = pygame.sprite.Group()
+
 
 def AddAlienToList():
     ListOfAliens.add(Alien.Alien(gm.ALIEN_LEFT, player, random.randint(100,1100), random.randint(100,1100), MainLevel))
-
 
 
 def UpdateAliens():
@@ -47,6 +48,7 @@ def DrawAliens():
 
 
 AddAlienToList()
+ListOfPlayers.add(player)
 GameLoop = True
 
 TimeToSpawnAlien = 0 #poniewaz gra odswieza sie 30 klatek na sekunde to jesli wartosc osiagne 40 to znaczy ze kosmita pojawiac sie bedzie okolo 1,3 sekundy
@@ -63,7 +65,6 @@ while GameLoop:
         player.get_event(event)
 
     # aktualziacja i rysowanie obiektow
-    player.Update()
     
     TimeToSpawnAlien += 1
     if TimeToSpawnAlien == 40:
@@ -72,9 +73,11 @@ while GameLoop:
 
     pygame.sprite.groupcollide(MainLevel.DzidaBullets, ListOfAliens, True, True)
     pygame.sprite.groupcollide(MainLevel.KarabinekBullets, ListOfAliens, True, True)
-    #pygame.sprite.groupcollide(player, ListOfAliens, True, False)
-    
+    pygame.sprite.groupcollide(ListOfPlayers, ListOfAliens, True, False)
+   
+
     UpdateAliens()
+    player.Update()
     
     MainLevel.Update()
     
@@ -85,7 +88,7 @@ while GameLoop:
     DrawAliens()
 
     MainLevel.Draw(Screen)
-
+    
    
     #aktualizacja okna gry
     pygame.display.flip()
