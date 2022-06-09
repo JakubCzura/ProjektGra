@@ -20,11 +20,11 @@ Clock = pygame.time.Clock()
 
 
 #konkretyzacja obiektow
-player = Player.Player(gm.KAPITAN_R)
-player.rect.left = 150
-player.rect.bottom = gm.HEIGHT - 70
-MainLevel = MainLevel.MainLevel(player)
-player.level = MainLevel
+Player = Player.Player(gm.KAPITAN_R)
+Player.rect.left = 150
+Player.rect.bottom = gm.HEIGHT - 70
+MainLevel = MainLevel.MainLevel(Player)
+Player.level = MainLevel
 
 fps = 30 #liczba klatek na sekunde
 
@@ -37,10 +37,10 @@ ListOfPlayers = pygame.sprite.Group()
 
 
 def AddAlienToList():
-    ListOfAliens.add(Alien.Alien(gm.ALIEN_LEFT, player, random.randint(100,1100), random.randint(100,1100), MainLevel))
+    ListOfAliens.add(Alien.Alien(gm.ALIEN_LEFT, Player, random.randint(100,1100), random.randint(100,1100), MainLevel))
 
 def AddPlayerToList():
-    ListOfPlayers.add(player)
+    ListOfPlayers.add(Player)
 
 def UpdateAliens():
     for Alien in ListOfAliens:
@@ -67,7 +67,7 @@ while GameLoop:
         elif event.type == pygame.KEYDOWN:
             if event.key == pygame.K_ESCAPE:
                 GameLoop = False
-        player.get_event(event)
+        Player.get_event(event)
 
     # aktualziacja i rysowanie obiektow
     
@@ -85,11 +85,11 @@ while GameLoop:
    
 
     UpdateAliens()
-    player.Update()
+    Player.Update()
     
     MainLevel.Update()
     
-    player.Draw(Screen)
+    Player.Draw(Screen)
 
     DrawAliens()
 
