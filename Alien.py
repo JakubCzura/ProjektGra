@@ -14,7 +14,7 @@ class Alien(pygame.sprite.Sprite):
         self.movementY = 0
         self.isLookingLeft = False
         self.isLookingDown = False
-        self.speed = 1 #prêdkoœæ kosmity
+        self.speed = 1 #prï¿½dkoï¿½ï¿½ kosmity
         self.player = player
         self.IsAlive = True
         
@@ -100,7 +100,7 @@ class Alien(pygame.sprite.Sprite):
     #    #K_RIGHT               
     #    #K_LEFT   
         
-    #    #keydown jeœli klawisz jest wciœniêty
+    #    #keydown jeï¿½li klawisz jest wciï¿½niï¿½ty
     #    if event.type == pygame.KEYDOWN:
     #        if event.key == pygame.K_RIGHT:
     #            self.MoveRight()
@@ -113,7 +113,7 @@ class Alien(pygame.sprite.Sprite):
     #        if event.key == pygame.K_SPACE:
     #            self.shoot()
 
-    #    #keyup jeœli klawisz siê zwalnia
+    #    #keyup jeï¿½li klawisz siï¿½ zwalnia
     #    if event.type == pygame.KEYUP:
     #        if event.key == pygame.K_RIGHT:
     #            self.MoveRight()
