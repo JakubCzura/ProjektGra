@@ -51,14 +51,6 @@ GameLoop = True
 
 TimeToSpawnAlien = 0 #poniewaz gra odswieza sie 30 klatek na sekunde to jesli wartosc osiagne 40 to znaczy ze kosmita pojawiac sie bedzie okolo 1,3 sekundy
 
-
-pygame.sprite.groupcollide(MainLevel.DzidaBullets, ListOfAliens, True, False)
-def DeleteAlien():
-    for d in MainLevel.DzidaBullets:
-        if d.rect.left > gm.WIDTH or d.rect.right < 0:
-            d.kill()
-
-
 #petla gry
 while GameLoop:
     Screen.fill(gm.LIGHTBLUE)
@@ -70,7 +62,7 @@ while GameLoop:
                 GameLoop = False
         player.get_event(event)
 
-    # aktualziacja i rysowanie obiekt�w
+    # aktualziacja i rysowanie obiektow
     player.Update()
     
     TimeToSpawnAlien += 1
@@ -78,9 +70,14 @@ while GameLoop:
         AddAlienToList()
         TimeToSpawnAlien = 0
 
+    pygame.sprite.groupcollide(MainLevel.DzidaBullets, ListOfAliens, True, True)
+    pygame.sprite.groupcollide(MainLevel.KarabinekBullets, ListOfAliens, True, True)
+    #pygame.sprite.groupcollide(player, ListOfAliens, True, False)
+    
     UpdateAliens()
     
     MainLevel.Update()
+    
 
 
     player.Draw(Screen)
