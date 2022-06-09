@@ -14,10 +14,11 @@ class Alien(pygame.sprite.Sprite):
         self.movementY = 0
         self.isLookingLeft = False
         self.isLookingDown = False
-        self.speed = 1 #prędkość kosmity
+        #self.level = None
+        self.speed = 1 #pr�dko�� kosmity
         self.player = player
         self.IsAlive = True
-        
+        self.level = ''
 
     def Draw(self, surface):
         surface.blit(self.image, self.rect)
@@ -55,7 +56,7 @@ class Alien(pygame.sprite.Sprite):
             self.rect.y += 1
 
         # ruch w poziomie
-        self.rect.x += self.movementX
+        #self.rect.x += self.movementX
 
         #aniamcja
         if self.movementX > 0:
@@ -64,66 +65,36 @@ class Alien(pygame.sprite.Sprite):
             self._Move(gm.KAPITAN_LEFT)
         
 
-        #colliding_platfoms = pygame.sprite.spritecollide(
-        #    self, self.level.platforms,False)
-        #for p in colliding_platfoms:
-        #    if self.movementX > 0:
-        #        self.rect.right = p.rect.left
-        #    if self.movementX < 0:
-        #        self.rect.left = p.rect.right
+        colliding_platfoms = pygame.sprite.spritecollide(
+            self, self.level.platforms,False)
+        for p in colliding_platfoms:
+            if self.movementX > 0:
+                self.rect.right = p.rect.left
+            if self.movementX < 0:
+                self.rect.left = p.rect.right
 
 
-        ## ruch w pionie
+        # ruch w pionie
         #self.rect.y += self.movementY
 
-        #colliding_platfoms = pygame.sprite.spritecollide(
-        #    self, self.level.platforms,False)
-        #for p in colliding_platfoms:
-        #    if self.movementY > 0:
-        #        self.rect.bottom = p.rect.top
-        #        if self.movementX == 0:
-        #            if self.isLookingLeft:
-        #                self.image = gm.KAPITAN_L
-        #            else:
-        #                self.image = gm.KAPITAN_R
+        colliding_platfoms = pygame.sprite.spritecollide(
+            self, self.level.platforms,False)
+        for p in colliding_platfoms:
+            if self.movementY > 0:
+                self.rect.bottom = p.rect.top
+                if self.movementX == 0:
+                    if self.isLookingLeft:
+                        self.image = gm.ALIEN_LEFT
+                    else:
+                        self.image = gm.ALIEN_RIGHT
 
-        #    if self.movementY < 0:
-        #        self.rect.top = p.rect.bottom
+            if self.movementY < 0:
+                self.rect.top = p.rect.bottom
 
-        #    self.movementY = 0
+            self.movementY = 0
 
 
-    #def get_event(self, event):
-     
-    #    #K_UP                 
-    #    #K_DOWN                
-    #    #K_RIGHT               
-    #    #K_LEFT   
-        
-    #    #keydown je�li klawisz jest wci�ni�ty
-    #    if event.type == pygame.KEYDOWN:
-    #        if event.key == pygame.K_RIGHT:
-    #            self.MoveRight()
-    #        if event.key == pygame.K_LEFT:
-    #            self.TurnLeft()
-    #        if event.key == pygame.K_UP:
-    #            self.MoveUp()
-    #        if event.key == pygame.K_DOWN:
-    #            self.MoveDown()
-    #        if event.key == pygame.K_SPACE:
-    #            self.shoot()
-
-    #    #keyup jeśli klawisz się zwalnia
-    #    if event.type == pygame.KEYUP:
-    #        if event.key == pygame.K_RIGHT:
-    #            self.MoveRight()
-    #        if event.key == pygame.K_LEFT:
-    #            self.TurnLeft()
-    #        if event.key == pygame.K_UP:
-    #            self.MoveUp()
-    #        if event.key == pygame.K_DOWN:
-    #            self.MoveDown()
-   
+ 
 
     def _Move(self, image):
         self.image = image
