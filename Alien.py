@@ -14,7 +14,7 @@ class Alien(pygame.sprite.Sprite):
         self.isLookingLeft = False
         self.isLookingDown = False
         #self.level = None
-        self.speed = 2 #prêdkoœæ gracza
+        self.speed = 2 #prï¿½dkoï¿½ï¿½ gracza
         self.player = player
 
     def Draw(self, surface):
@@ -86,7 +86,7 @@ class Alien(pygame.sprite.Sprite):
         #K_RIGHT               
         #K_LEFT   
 
-        #keydown jeœli klawisz jest wciœniêty
+        #keydown jeï¿½li klawisz jest wciï¿½niï¿½ty
         if self.player.event.type == pygame.KEYDOWN:
             if event.key == pygame.K_RIGHT:
                 self.MoveRight()
@@ -99,7 +99,7 @@ class Alien(pygame.sprite.Sprite):
             if event.key == pygame.K_SPACE:
                 self.shoot()
 
-        #keyup jeœli klawisz siê zwalnia
+        #keyup jeï¿½li klawisz siï¿½ zwalnia
         if event.type == pygame.KEYUP:
             if event.key == pygame.K_RIGHT:
                 self.MoveRight()
