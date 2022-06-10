@@ -1,7 +1,7 @@
 import pygame, os
 import Resources
 import Music
-import Player, MainLevel, Alien, Button
+import Player, MainLevel, Alien, Menu
 import random
 
 pygame.init()
@@ -74,7 +74,8 @@ def PlayGame():
         pygame.sprite.groupcollide(MainLevel.KarabinekBullets, ListOfAliens, True, True)
         if pygame.sprite.groupcollide(ListOfPlayers, ListOfAliens, True, True) != {}: #jesli zderzy się gracz i kosmita to gra się konczy
             GameLoop = False
-  
+            pygame.quit() #koniec gry
+        
         UpdateAliens()
         Player.Update()    
         MainLevel.Update()
@@ -90,8 +91,9 @@ def PlayGame():
 
 def ShowMenu():
     GameLoop = True #petla gry
-    PlayButton = Button.Button(700, 200, 'PLAY_BUTTON')
-    EscapeButton = Button.Button(700, 700, 'ESCAPE_BUTTON')
+    WelcomeMessage = Menu.Menu(450, 100, 'WELCOME_BUTTON')
+    PlayMessage = Menu.Menu(700, 500, 'PLAY_BUTTON')
+    EscapeMessage= Menu.Menu(700, 800, 'ESCAPE_BUTTON')
     
     while GameLoop:
         Screen.fill(Resources.lightBlue)
@@ -103,18 +105,15 @@ def ShowMenu():
                     GameLoop = False
                 if event.key == pygame.K_p: #wcisnij p zeby grac
                     PlayGame()
-        #if PlayButton.Tick():
-         #   PlayGame()
       
         #aktualizacja okna gry
-        PlayButton.Draw(Screen)
-        EscapeButton.Draw(Screen)
+        WelcomeMessage.Draw(Screen)
+        PlayMessage.Draw(Screen)
+        EscapeMessage.Draw(Screen)
         pygame.display.flip()
         Clock.tick(fps)
 
-
 ShowMenu()
-#PlayGame()
 
 pygame.quit()
 
