@@ -1,9 +1,5 @@
-import pygame, os
+import pygame
 import Resources
-import Bullet
-import Music
-import Player
-import math
 
 class Alien(pygame.sprite.Sprite):
     def __init__(self, image, player, left, bottom, level):
@@ -60,26 +56,24 @@ class Alien(pygame.sprite.Sprite):
             self._Move(Resources.ALIEN_LEFT)
         
 
-        colliding_platfoms = pygame.sprite.spritecollide(
-            self, self.level.platforms,False)
-        for p in colliding_platfoms:
+        collidingPlatforms = pygame.sprite.spritecollide(self, self.level.platforms,False)
+        for platform in collidingPlatforms:
             if self.movementX > 0:
-                self.rect.right = p.rect.left
+                self.rect.right = platform.rect.left
             if self.movementX < 0:
-                self.rect.left = p.rect.right
+                self.rect.left = platform.rect.right
 
-        colliding_platfoms = pygame.sprite.spritecollide(
-            self, self.level.platforms,False)
-        for p in colliding_platfoms:
+        collidingPlatforms = pygame.sprite.spritecollide(self, self.level.platforms,False)
+        for platform in collidingPlatforms:
             if self.movementY > 0:
-                self.rect.bottom = p.rect.top
+                self.rect.bottom = platform.rect.top
                 if self.movementX == 0:
                     if self.isLookingLeft:
                         self.image = Resources.ALIEN_LEFT
                     else:
                         self.image = Resources.ALIEN_RIGHT
             if self.movementY < 0:
-                self.rect.top = p.rect.bottom
+                self.rect.top = platform.rect.bottom
             self.movementY = 0
    
 
