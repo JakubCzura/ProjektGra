@@ -63,7 +63,7 @@ def PlayGame():
                 if event.key == pygame.K_ESCAPE:
                     GameLoop = False
             Player.get_event(event)
-     
+
         TimeToSpawnAlien += 1
         if TimeToSpawnAlien == 30:
             AddAlienToList()
