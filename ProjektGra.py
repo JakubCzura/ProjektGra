@@ -51,7 +51,7 @@ AddPlayerToList()
 
 def PlayGame():   
     GameLoop = True #petla gry
-    TimeToSpawnAlien = 0 #poniewaz gra odswieza sie 30 klatek na sekunde to jesli wartosc osiagne 60 to znaczy ze kosmita pojawiac sie bedzie okolo 2 sekundy
+    TimeToSpawnAlien = 0 
     AmountOfAliens = 0
     
     while GameLoop:
@@ -65,7 +65,7 @@ def PlayGame():
             Player.get_event(event)
 
         TimeToSpawnAlien += 1
-        if TimeToSpawnAlien == 30:
+        if TimeToSpawnAlien == 30: #poniewaz gra odswieza sie 30 klatek na sekunde to jesli wartosc osiagne 60 to znaczy ze kosmita pojawiac sie bedzie okolo 2 sekundy
             AddAlienToList()
             AmountOfAliens += 1
             TimeToSpawnAlien = 0

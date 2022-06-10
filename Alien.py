@@ -10,7 +10,7 @@ class Alien(pygame.sprite.Sprite):
         self.movementY = 0
         self.isLookingLeft = False
         self.isLookingDown = False
-        self.speed = 1 #prędkość kosmity
+        self.speed = 2 #prędkość kosmity
         self.player = player
         self.rect.left = left
         self.rect.bottom = bottom
@@ -38,16 +38,16 @@ class Alien(pygame.sprite.Sprite):
     def Update(self):
         if self.player.rect.x < self.rect.x:
             self.MoveLeft()
-            self.rect.x -= 1
+            self.rect.x -= self.speed
         else:
             self.MoveRight()
-            self.rect.x += 1
+            self.rect.x += self.speed
         if self.player.rect.y < self.rect.y:
             self.MoveDown()
-            self.rect.y -= 1
+            self.rect.y -= self.speed
         else:
             self.MoveUp()
-            self.rect.y += 1
+            self.rect.y += self.speed
 
         #aniamcja
         if self.movementX > 0:
