@@ -10,15 +10,10 @@ class Music():
         #¿eby muzyka gra³a w nieskoñczonoœæ daje siê -1
         #¿eby muzyka raz siê odtworzy³a daje siê 0
     def PlayMusic(self):
-        #mixer.init()
         mixer.music.load('music/' + self.title)
         mixer.music.play(self.isInfinityPlaying)
 
-    def PlayShoot(self):
-        #mixer.init()
-        #mixer.music.load('music/' + self.title)
-        #mixer.music.play(self.isInfinityPlaying)
-        
+    def PlayShoot(self):       
         mixer.Sound.play(self.sound)
 
 

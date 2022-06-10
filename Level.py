@@ -46,7 +46,7 @@ class Level:
 
     def Draw(self, surface):
         for p in self.platforms:
-            p.draw(surface)
+            p.Draw(surface)
 
         self.ListOfWeapons.draw(surface)
         self.KarabinekBullets.draw(surface)

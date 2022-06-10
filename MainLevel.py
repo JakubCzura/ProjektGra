@@ -10,15 +10,14 @@ class MainLevel(Level.Level):
 
 
     def _CreatePlatforms(self):
-        platforms_cor = [[70, 70, 150, 1010], #kafelek kapitana
+        platforms = [[70, 70, 150, 1010], #kafelek kapitana
                          [70, 70, 150, 520],
                          [70, 70, 520, 530],
                          [70, 70, 1050, 520],
                          [70, 70, 1000, 1020]
                          ]
         
-        #platforms_cor = []
-        for cor in platforms_cor:
+        for cor in platforms:
             self.platforms.add(Platform.Platform(Resources.BORDER_LIST, *cor))
 
     def _CreateItems(self):
