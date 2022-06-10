@@ -1,5 +1,5 @@
 import pygame, os
-import GameModule as gm
+import Resources
 import Bullet
 import Music
 import Player
@@ -55,9 +55,9 @@ class Alien(pygame.sprite.Sprite):
 
         #aniamcja
         if self.movementX > 0:
-            self._Move(gm.ALIEN_RIGHT)
+            self._Move(Resources.ALIEN_RIGHT)
         if self.movementX < 0:
-            self._Move(gm.ALIEN_LEFT)
+            self._Move(Resources.ALIEN_LEFT)
         
 
         colliding_platfoms = pygame.sprite.spritecollide(
@@ -75,9 +75,9 @@ class Alien(pygame.sprite.Sprite):
                 self.rect.bottom = p.rect.top
                 if self.movementX == 0:
                     if self.isLookingLeft:
-                        self.image = gm.ALIEN_LEFT
+                        self.image = Resources.ALIEN_LEFT
                     else:
-                        self.image = gm.ALIEN_RIGHT
+                        self.image = Resources.ALIEN_RIGHT
             if self.movementY < 0:
                 self.rect.top = p.rect.bottom
             self.movementY = 0

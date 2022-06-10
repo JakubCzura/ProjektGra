@@ -1,4 +1,4 @@
-import GameModule as gm
+import Resources
 import Level, Platform, Item
 
 
@@ -19,12 +19,12 @@ class MainLevel(Level.Level):
         
         #platforms_cor = []
         for cor in platforms_cor:
-            self.platforms.add(Platform.Platform(gm.BORDER_LIST, *cor))
+            self.platforms.add(Platform.Platform(Resources.BORDER_LIST, *cor))
 
     def _CreateItems(self):
-        karabinek = Item.Item(gm.KARABINEK, 'karabinek', 170, 480)
-        karabinek2 = Item.Item(gm.KARABINEK, 'karabinek', 550, 490)
-        dzida_laserowa = Item.Item(gm.LASEROWA_DZIDA, 'dzida_laserowa', 1080, 480)
-        dzida_laserowa2 = Item.Item(gm.LASEROWA_DZIDA, 'dzida_laserowa', 1030, 980)
+        karabinek = Item.Item(Resources.KARABINEK, 'karabinek', 170, 480)
+        karabinek2 = Item.Item(Resources.KARABINEK, 'karabinek', 550, 490)
+        dzida_laserowa = Item.Item(Resources.LASEROWA_DZIDA, 'dzida_laserowa', 1080, 480)
+        dzida_laserowa2 = Item.Item(Resources.LASEROWA_DZIDA, 'dzida_laserowa', 1030, 980)
         self.ListOfWeapons.add(karabinek, karabinek2, dzida_laserowa, dzida_laserowa2)
         

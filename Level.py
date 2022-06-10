@@ -1,5 +1,5 @@
-import pygame, os
-import GameModule as gm
+import pygame
+import Resources
 
 # og�lna klasa planszy
 class Level:
@@ -36,12 +36,12 @@ class Level:
 
         pygame.sprite.groupcollide(self.KarabinekBullets, self.platforms, True, False)
         for b in self.KarabinekBullets:
-            if b.rect.left > gm.width or b.rect.right < 0:
+            if b.rect.left > Resources.width or b.rect.right < 0:
                 b.kill()
 
         pygame.sprite.groupcollide(self.DzidaBullets, self.platforms, True, False)
         for d in self.DzidaBullets:
-            if d.rect.left > gm.width or d.rect.right < 0:
+            if d.rect.left > Resources.width or d.rect.right < 0:
                 d.kill()
 
     def Draw(self, surface):

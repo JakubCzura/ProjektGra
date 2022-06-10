@@ -1,5 +1,5 @@
 import pygame, os
-import GameModule as gm
+import Resources
 import Music
 import Player, MainLevel, Alien
 import random
@@ -11,12 +11,12 @@ pygame.init()
 os.environ["SDL_VIDEO_CENTERED"] = "1"
 
 # tworzenie okna gry
-Screen = pygame.display.set_mode(gm.ScreenSize)
+Screen = pygame.display.set_mode(Resources.ScreenSize)
 Clock = pygame.time.Clock()
 
 
 #konkretyzacja obiektow
-Player = Player.Player(gm.KAPITAN_R)
+Player = Player.Player(Resources.KAPITAN_R)
 Player.rect.left = 150
 Player.rect.bottom = 1000
 MainLevel = MainLevel.MainLevel(Player)
@@ -35,9 +35,9 @@ ListOfPlayers = pygame.sprite.Group()
 def AddAlienToList():
     leftOrRight = random.randint(0,1)
     if leftOrRight == 0:
-        ListOfAliens.add(Alien.Alien(gm.ALIEN_LEFT, Player, random.randint(0,100), random.randint(100,1100), MainLevel))
+        ListOfAliens.add(Alien.Alien(Resources.ALIEN_LEFT, Player, random.randint(0,100), random.randint(100,1100), MainLevel))
     else:
-        ListOfAliens.add(Alien.Alien(gm.ALIEN_LEFT, Player, random.randint(1800,1900), random.randint(100,1100), MainLevel))
+        ListOfAliens.add(Alien.Alien(Resources.ALIEN_LEFT, Player, random.randint(1800,1900), random.randint(100,1100), MainLevel))
 
 
 def AddPlayerToList():
@@ -63,7 +63,7 @@ def PlayGame():
     AmountOfAliens = 0
     
     while GameLoop:
-        Screen.fill(gm.LIGHTBLUE)
+        Screen.fill(Resources.LIGHTBLUE)
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 GameLoop = False
