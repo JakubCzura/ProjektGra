@@ -58,52 +58,49 @@ def DrawAliens():
 
 AddAlienToList()
 AddPlayerToList()
-GameLoop = True
 
-TimeToSpawnAlien = 0 #poniewaz gra odswieza sie 30 klatek na sekunde to jesli wartosc osiagne 60 to znaczy ze kosmita pojawiac sie bedzie okolo 2 sekundy
-AmountOfAliens = 0
 
-#petla gry
-while GameLoop:
-    Screen.fill(gm.LIGHTBLUE)
-    for event in pygame.event.get():
-        if event.type == pygame.QUIT:
-            GameLoop = False
-        elif event.type == pygame.KEYDOWN:
-            if event.key == pygame.K_ESCAPE:
+
+def PlayGame():   
+    GameLoop = True #petla gry
+    TimeToSpawnAlien = 0 #poniewaz gra odswieza sie 30 klatek na sekunde to jesli wartosc osiagne 60 to znaczy ze kosmita pojawiac sie bedzie okolo 2 sekundy
+    AmountOfAliens = 0
+    
+    while GameLoop:
+        Screen.fill(gm.LIGHTBLUE)
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
                 GameLoop = False
-        Player.get_event(event)
+            elif event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_ESCAPE:
+                    GameLoop = False
+            Player.get_event(event)
+     
+        TimeToSpawnAlien += 1
+        if TimeToSpawnAlien == 30:
+            AddAlienToList()
+            AmountOfAliens += 1
+            TimeToSpawnAlien = 0
 
-    # aktualziacja i rysowanie obiektow
+        pygame.sprite.groupcollide(MainLevel.DzidaBullets, ListOfAliens, True, True)
+        pygame.sprite.groupcollide(MainLevel.KarabinekBullets, ListOfAliens, True, True)
+        if pygame.sprite.groupcollide(ListOfPlayers, ListOfAliens, True, True) != {}: #jesli zderzy się gracz i kosmita to gra się konczy
+            GameLoop = False
+  
+        UpdateAliens()
+        Player.Update()    
+        MainLevel.Update()
     
-    TimeToSpawnAlien += 1
-    if TimeToSpawnAlien == 30:
-        AddAlienToList()
-        AmountOfAliens += 1
-        TimeToSpawnAlien = 0
+        Player.Draw(Screen)
+        DrawAliens()
+        MainLevel.Draw(Screen)
+      
+        #aktualizacja okna gry
+        pygame.display.flip()
+        Clock.tick(fps)
 
-    pygame.sprite.groupcollide(MainLevel.DzidaBullets, ListOfAliens, True, True)
-    pygame.sprite.groupcollide(MainLevel.KarabinekBullets, ListOfAliens, True, True)
-    if pygame.sprite.groupcollide(ListOfPlayers, ListOfAliens, True, True) != {}: #jesli zderzy się gracz i kosmita to gra się konczy
-        GameLoop = False
 
-   
-
-    UpdateAliens()
-    Player.Update()
-    
-    MainLevel.Update()
-    
-    Player.Draw(Screen)
-
-    DrawAliens()
-
-    MainLevel.Draw(Screen)
-    
-   
-    #aktualizacja okna gry
-    pygame.display.flip()
-    Clock.tick(fps)
+PlayGame()
 
 pygame.quit()
 
