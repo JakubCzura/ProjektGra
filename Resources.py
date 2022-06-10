@@ -17,7 +17,6 @@ for file_name in imageList:
     image_name = file_name[:-4].upper()
     globals()[image_name] = pygame.image.load(os.path.join(imageDirectoryPath, file_name)).convert_alpha(BACKGROUND)
 
-
 KAPITAN_RIGHT = KAPITAN_R
 KAPITAN_LEFT = KAPITAN_L
 
