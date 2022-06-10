@@ -1,6 +1,4 @@
-import pygame, os
-import game_module as gm
-import Player
+import pygame
 
 class Platform(pygame.sprite.Sprite):
     def __init__(self, image_list, width, height, pos_x, pos_y):

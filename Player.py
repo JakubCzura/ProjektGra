@@ -1,5 +1,5 @@
-import pygame, os
-import game_module as gm
+import pygame
+import GameModule as gm
 import Bullet
 import Music
 
@@ -15,7 +15,6 @@ class Player(pygame.sprite.Sprite):
         self.level = None
         self.speed = 5 #predkosc gracza
         self.weapon = '' #uzywana bron
-        self.isAlive = True
 
     def Draw(self, surface):
         surface.blit(self.image, self.rect)

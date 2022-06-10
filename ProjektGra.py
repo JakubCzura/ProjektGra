@@ -1,11 +1,7 @@
-from asyncio.windows_events import NULL
-from turtle import update
 import pygame, os
-#from pygame.locals import *
-#from pygame import mixer
-import game_module as gm
+import GameModule as gm
 import Music
-import Player, Platform, Item, Level, MainLevel, Alien
+import Player, MainLevel, Alien
 import random
 
 
@@ -15,14 +11,14 @@ pygame.init()
 os.environ["SDL_VIDEO_CENTERED"] = "1"
 
 # tworzenie okna gry
-Screen = pygame.display.set_mode(gm.SIZESCREEN)
+Screen = pygame.display.set_mode(gm.ScreenSize)
 Clock = pygame.time.Clock()
 
 
 #konkretyzacja obiektow
 Player = Player.Player(gm.KAPITAN_R)
 Player.rect.left = 150
-Player.rect.bottom = gm.HEIGHT - 70
+Player.rect.bottom = 1000
 MainLevel = MainLevel.MainLevel(Player)
 Player.level = MainLevel
 

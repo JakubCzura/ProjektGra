@@ -1,14 +1,13 @@
 # okno główne
 import pygame, os
 
-SIZESCREEN = WIDTH, HEIGHT = 1920, 1080
-
+ScreenSize = width, height = 1920, 1080
 
 # kolory
 DARKGREEN = pygame.color.THECOLORS['darkgreen']
 LIGHTBLUE = pygame.color.THECOLORS['lightblue']
 
-screen = pygame.display.set_mode(SIZESCREEN)
+screen = pygame.display.set_mode(ScreenSize)
 
 
 path = 'images'

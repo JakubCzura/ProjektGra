@@ -1,6 +1,4 @@
-import pygame, os
-import game_module as gm
-
+import pygame
 
 class Item(pygame.sprite.Sprite):
     def __init__(self, image, name, pos_center_x, pos_center_y):

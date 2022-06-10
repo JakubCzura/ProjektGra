@@ -1,5 +1,5 @@
 import pygame, os
-import game_module as gm
+import GameModule as gm
 import Bullet
 import Music
 import Player
@@ -16,7 +16,6 @@ class Alien(pygame.sprite.Sprite):
         self.isLookingDown = False
         self.speed = 1 #prędkość kosmity
         self.player = player
-        self.IsAlive = True
         self.rect.left = left
         self.rect.bottom = bottom
         self.level = level
@@ -40,8 +39,6 @@ class Alien(pygame.sprite.Sprite):
         self.movementX = -self.speed
         self.isLookingLeft = True
 
-   
-
     def Update(self):
         if self.player.rect.x < self.rect.x:
             self.MoveLeft()
@@ -55,9 +52,6 @@ class Alien(pygame.sprite.Sprite):
         else:
             self.MoveUp()
             self.rect.y += 1
-
-        # ruch w poziomie
-        #self.rect.x += self.movementX
 
         #aniamcja
         if self.movementX > 0:
@@ -74,10 +68,6 @@ class Alien(pygame.sprite.Sprite):
             if self.movementX < 0:
                 self.rect.left = p.rect.right
 
-
-        # ruch w pionie
-        #self.rect.y += self.movementY
-
         colliding_platfoms = pygame.sprite.spritecollide(
             self, self.level.platforms,False)
         for p in colliding_platfoms:
@@ -88,10 +78,8 @@ class Alien(pygame.sprite.Sprite):
                         self.image = gm.ALIEN_LEFT
                     else:
                         self.image = gm.ALIEN_RIGHT
-
             if self.movementY < 0:
                 self.rect.top = p.rect.bottom
-
             self.movementY = 0
    
 

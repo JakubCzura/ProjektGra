@@ -23,7 +23,7 @@
   <ItemGroup>
     <Compile Include="Alien.py" />
     <Compile Include="Bullet.py" />
-    <Compile Include="game_module.py" />
+    <Compile Include="Resources.py" />
     <Compile Include="Item.py" />
     <Compile Include="Level.py" />
     <Compile Include="MainLevel.py" />

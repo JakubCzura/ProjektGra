@@ -1,5 +1,4 @@
-import pygame, os
-import game_module as gm
+import GameModule as gm
 import Level, Platform, Item
 
 
