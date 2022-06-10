@@ -63,7 +63,7 @@ def PlayGame():
     AmountOfAliens = 0
     
     while GameLoop:
-        Screen.fill(Resources.LIGHTBLUE)
+        Screen.fill(Resources.deepSkyBlue1)
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 GameLoop = False

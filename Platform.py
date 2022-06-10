@@ -1,15 +1,15 @@
 import pygame
 
 class Platform(pygame.sprite.Sprite):
-    def __init__(self, image_list, width, height, pos_x, pos_y):
+    def __init__(self, image_list, width, height, rectX, rectY):
         super().__init__()
         self.image_list = image_list
         self.width = width
         self.height = height
         self.image = pygame.surface.Surface([self.width, self.height])
         self.rect = self.image.get_rect()
-        self.rect.x = pos_x
-        self.rect.y = pos_y
+        self.rect.x = rectX
+        self.rect.y = rectY
 
     def draw(self, surface):
 

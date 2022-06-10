@@ -1,38 +1,30 @@
-# okno główne
 import pygame, os
 
 ScreenSize = width, height = 1920, 1080
 
 # kolory
-DARKGREEN = pygame.color.THECOLORS['darkgreen']
-LIGHTBLUE = pygame.color.THECOLORS['lightblue']
+deepSkyBlue1 = pygame.color.THECOLORS['deepskyblue1']
 
 screen = pygame.display.set_mode(ScreenSize)
 
+imageDirectoryPath = 'images'
 
-path = 'images'
+imageList = sorted(os.listdir(imageDirectoryPath))
 
-file_names = sorted(os.listdir(path))
+BACKGROUND = pygame.image.load(os.path.join(imageDirectoryPath, 'background.png')).convert()
 
-#file_names.remove('background.png')
-BACKGROUND = pygame.image.load(os.path.join(path, 'background.png')).convert()
-
-
-for file_name in file_names:
+for file_name in imageList:
     image_name = file_name[:-4].upper()
-    globals()[image_name] = pygame.image.load(os.path.join(path, file_name)).convert_alpha(BACKGROUND)
+    globals()[image_name] = pygame.image.load(os.path.join(imageDirectoryPath, file_name)).convert_alpha(BACKGROUND)
 
 
 KAPITAN_RIGHT = KAPITAN_R
-
 KAPITAN_LEFT = KAPITAN_L
 
 ALIEN_RIGHT = ALIEN_R
-
 ALIEN_LEFT = ALIEN_L
 
 BORDER_LIST = [BORDER,BORDER,BORDER,BORDER]
 
 BULLET_LIST = [BULLET_R, BULLET_L]
-
 DZIDA_POCISK = [DZIDA_POCISK, DZIDA_POCISK]
