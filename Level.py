@@ -12,7 +12,6 @@ class Level:
         self.worldShift = 0
         self.worldShiftY = 0
 
-
     def Update(self):
         if self.player.rect.right >= 1300:
             diff = self.player.rect.right - 1300
@@ -45,8 +44,8 @@ class Level:
                 d.kill()
 
     def Draw(self, surface):
-        for p in self.platforms:
-            p.Draw(surface)
+        for platform in self.platforms:
+            platform.Draw(surface)
 
         self.ListOfWeapons.draw(surface)
         self.KarabinekBullets.draw(surface)
