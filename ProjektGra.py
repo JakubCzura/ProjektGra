@@ -37,7 +37,12 @@ ListOfPlayers = pygame.sprite.Group()
 
 
 def AddAlienToList():
-    ListOfAliens.add(Alien.Alien(gm.ALIEN_LEFT, Player, random.randint(100,1100), random.randint(100,1100), MainLevel))
+    leftOrRight = random.randint(0,1)
+    if leftOrRight == 0:
+        ListOfAliens.add(Alien.Alien(gm.ALIEN_LEFT, Player, random.randint(0,100), random.randint(100,1100), MainLevel))
+    else:
+        ListOfAliens.add(Alien.Alien(gm.ALIEN_LEFT, Player, random.randint(1800,1900), random.randint(100,1100), MainLevel))
+
 
 def AddPlayerToList():
     ListOfPlayers.add(Player)
@@ -72,7 +77,7 @@ while GameLoop:
     # aktualziacja i rysowanie obiektow
     
     TimeToSpawnAlien += 1
-    if TimeToSpawnAlien == 60:
+    if TimeToSpawnAlien == 30:
         AddAlienToList()
         AmountOfAliens += 1
         TimeToSpawnAlien = 0
