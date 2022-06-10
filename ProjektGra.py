@@ -1,7 +1,7 @@
 import pygame, os
 import Resources
 import Music
-import Player, MainLevel, Alien
+import Player, MainLevel, Alien, Button
 import random
 
 pygame.init()
@@ -88,7 +88,33 @@ def PlayGame():
         Clock.tick(fps)
 
 
-PlayGame()
+def ShowMenu():
+    GameLoop = True #petla gry
+    PlayButton = Button.Button(700, 200, 'PLAY_BUTTON')
+    EscapeButton = Button.Button(700, 700, 'ESCAPE_BUTTON')
+    
+    while GameLoop:
+        Screen.fill(Resources.lightBlue)
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                GameLoop = False
+            elif event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_ESCAPE: #wcisnij esc zeby wyjsc6
+                    GameLoop = False
+                if event.key == pygame.K_p: #wcisnij p zeby grac
+                    PlayGame()
+        #if PlayButton.Tick():
+         #   PlayGame()
+      
+        #aktualizacja okna gry
+        PlayButton.Draw(Screen)
+        EscapeButton.Draw(Screen)
+        pygame.display.flip()
+        Clock.tick(fps)
+
+
+ShowMenu()
+#PlayGame()
 
 pygame.quit()
 
