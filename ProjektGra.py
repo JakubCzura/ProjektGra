@@ -27,31 +27,8 @@ fps = 30 #liczba klatek na sekunde
 MusicKarabinki = Music.Music('strzały_z_karabinow.wav', -1)
 MusicKarabinki.PlayMusic()
 
-#ListOfAliens = pygame.sprite.Group()
-#ListOfPlayers = pygame.sprite.Group()
 
-#def AddAlienToList(alienSpeed):
-#    leftOrRight = random.randint(0,1)
-#    if leftOrRight == 0:
-#        ListOfAliens.add(Alien.Alien(Resources.ALIEN_LEFT, Player, random.randint(0,100), random.randint(100,1100), MainLevel, alienSpeed))
-#    else:
-#        ListOfAliens.add(Alien.Alien(Resources.ALIEN_LEFT, Player, random.randint(1800,1900), random.randint(100,1100), MainLevel, alienSpeed))
-
-
-#def AddPlayerToList():
-#    ListOfPlayers.add(Player)
-
-#def UpdateAliens():
-#    for Alien in ListOfAliens:
-#        Alien.Update()
-
-#def DrawAliens():
-#    for Alien in ListOfAliens:
-#        Alien.Draw(Screen)
-
-#AddPlayerToList()
-
-def PlayGame(gameMode='normal'):   
+def PlayGame(gameMode='normal'):
     ListOfAliens = pygame.sprite.Group()
     ListOfPlayers = pygame.sprite.Group()
 
@@ -73,11 +50,8 @@ def PlayGame(gameMode='normal'):
         for Alien in ListOfAliens:
             Alien.Draw(Screen)
 
-    AddPlayerToList()
-    
+    AddPlayerToList()  
 
-
-    
     SpawnAlien = 10
     if gameMode == 'normal':
         SpawnAlien = 30
@@ -97,13 +71,13 @@ def PlayGame(gameMode='normal'):
             Player.get_event(event)
 
         TimeToSpawnAlien += 1
-        
+
         if gameMode == 'normal':      
             if TimeToSpawnAlien == SpawnAlien: #poniewaz gra odswieza sie 30 klatek na sekunde to jesli wartosc osiagne 60 to znaczy ze kosmita pojawiac sie bedzie okolo 2 sekundy
                 AddAlienToList(2)
                 TimeToSpawnAlien = 0
         elif gameMode == 'hard':
-             if TimeToSpawnAlien == SpawnAlien: #poniewaz gra odswieza sie 30 klatek na sekunde to jesli wartosc osiagne 60 to znaczy ze kosmita pojawiac sie bedzie okolo 2 sekundy
+             if TimeToSpawnAlien == SpawnAlien: 
                 AddAlienToList(6)
                 TimeToSpawnAlien = 0
 
@@ -136,8 +110,6 @@ def ShowMenu():
     while MenuLoop:
         Screen.fill(Resources.lightBlue)
         for event in pygame.event.get():
-            #if event.type == pygame.QUIT:
-            #    MenuLoop = False
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_ESCAPE: #wcisnij esc zeby wyjsc6
                     MenuLoop = False
