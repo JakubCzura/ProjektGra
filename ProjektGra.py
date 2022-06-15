@@ -15,7 +15,7 @@ os.environ["SDL_VIDEO_CENTERED"] = "1"
 Screen = pygame.display.set_mode(Resources.ScreenSize)
 Clock = pygame.time.Clock()
 
-#konkretyzacja obiektow
+#stworzenie gracza i poziomu
 Player = Player.Player(Resources.KAPITAN_R)
 Player.rect.left = 150
 Player.rect.bottom = 1000
@@ -63,8 +63,6 @@ def PlayGame(gameMode='normal'):
     while GameLoop:
         Screen.fill(Resources.deepSkyBlue1)
         for event in pygame.event.get():
-            #if event.type == pygame.QUIT:
-            #    GameLoop = False
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_ESCAPE:
                     GameLoop = False
@@ -85,7 +83,6 @@ def PlayGame(gameMode='normal'):
         pygame.sprite.groupcollide(MainLevel.KarabinekBullets, ListOfAliens, True, True)
         if pygame.sprite.groupcollide(ListOfPlayers, ListOfAliens, True, True) != {}: #jesli zderzy się gracz i kosmita to gra się konczy
             GameLoop = False
-            #pygame.quit() #koniec gry
         
         UpdateAliens()
         Player.Update()    

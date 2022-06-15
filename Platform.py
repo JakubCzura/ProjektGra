@@ -11,17 +11,5 @@ class Platform(pygame.sprite.Sprite):
         self.rect.x = rectX
         self.rect.y = rectY
 
-    #def Draw(self, surface):
-
-    #    if self.width == 70:
-    #        surface.blit(self.image_list[0], self.rect)
-    #    else:
-    #        surface.blit(self.image_list[1], self.rect)
-    #        for i in range(70, self.width-70, 70):
-    #            surface.blit(self.image_list[2], [self.rect.x + i,
-    #                                              self.rect.y])
-    #        surface.blit(self.image_list[3], [self.rect.x + self.width - 70,
-    #                                          self.rect.y])
-
     def Draw(self, surface):
         surface.blit(self.image, self.rect)

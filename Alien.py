@@ -49,13 +49,14 @@ class Alien(pygame.sprite.Sprite):
             self.MoveUp()
             self.rect.y += self.speed
 
-        #aniamcja
+        #aniamcja kosmity
         if self.movementX > 0:
             self._Move(Resources.ALIEN_RIGHT)
         if self.movementX < 0:
             self._Move(Resources.ALIEN_LEFT)
         
 
+        #kolizja z bocznymi krawędziami
         collidingPlatforms = pygame.sprite.spritecollide(self, self.level.platforms,False)
         for platform in collidingPlatforms:
             if self.movementX > 0:
@@ -63,6 +64,7 @@ class Alien(pygame.sprite.Sprite):
             if self.movementX < 0:
                 self.rect.left = platform.rect.right
 
+        #kolizja z góry i dołu
         collidingPlatforms = pygame.sprite.spritecollide(self, self.level.platforms,False)
         for platform in collidingPlatforms:
             if self.movementY > 0:

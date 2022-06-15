@@ -1,7 +1,7 @@
 import pygame
 import Resources
 
-# og�lna klasa planszy
+# ogolna klasa poziomu
 class Level:
     def __init__(self, player):
         self.player = player
@@ -34,14 +34,14 @@ class Level:
         self.DzidaBullets.update()
 
         pygame.sprite.groupcollide(self.KarabinekBullets, self.platforms, True, False)
-        for b in self.KarabinekBullets:
-            if b.rect.left > Resources.width or b.rect.right < 0:
-                b.kill()
+        for karabinekBullet in self.KarabinekBullets:
+            if karabinekBullet.rect.left > Resources.width or karabinekBullet.rect.right < 0:
+                karabinekBullet.kill()
 
         pygame.sprite.groupcollide(self.DzidaBullets, self.platforms, True, False)
-        for d in self.DzidaBullets:
-            if d.rect.left > Resources.width or d.rect.right < 0:
-                d.kill()
+        for dzidaBullet in self.DzidaBullets:
+            if dzidaBullet.rect.left > Resources.width or dzidaBullet.rect.right < 0:
+                dzidaBullet.kill()
 
     def Draw(self, surface):
         for platform in self.platforms:

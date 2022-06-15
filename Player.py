@@ -11,7 +11,6 @@ class Player(pygame.sprite.Sprite):
         self.movementX = 0
         self.movementY = 0
         self.isLookingLeft = False
-        self.isLookingDown = False
         self.level = None
         self.speed = 5 #predkosc gracza
         self.weapon = '' #uzywana bron
@@ -21,11 +20,9 @@ class Player(pygame.sprite.Sprite):
 
     def MoveUp(self):
         self.movementY = -self.speed
-        self.isLookingDown = False
 
     def MoveDown(self):
         self.movementY = self.speed
-        self.isLookingDown = True
 
     def MoveRight(self):
         self.movementX = self.speed
@@ -58,6 +55,7 @@ class Player(pygame.sprite.Sprite):
         if self.movementX < 0:
             self._Move(Resources.KAPITAN_LEFT)
         
+        #kolizja z przeszkodami z boku
         collidingPlatforms = pygame.sprite.spritecollide(
             self, self.level.platforms,False)
         for platform in collidingPlatforms:
@@ -69,8 +67,8 @@ class Player(pygame.sprite.Sprite):
         # ruch w pionie
         self.rect.y += self.movementY
 
-        collidingPlatforms = pygame.sprite.spritecollide(
-            self, self.level.platforms,False)
+        #kolizja z przeszkodami z góry
+        collidingPlatforms = pygame.sprite.spritecollide(self, self.level.platforms,False)
         for platform in collidingPlatforms:
             if self.movementY > 0:
                 self.rect.bottom = platform.rect.top
