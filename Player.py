@@ -92,7 +92,6 @@ class Player(pygame.sprite.Sprite):
                 self.weapon = 'karabinek'
             if weapon.name == 'dzida_laserowa':
                 self.weapon = 'dzida_laserowa'
-        print(self.weapon)
 
     def get_event(self, event):
      

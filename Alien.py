@@ -2,7 +2,7 @@ import pygame
 import Resources
 
 class Alien(pygame.sprite.Sprite):
-    def __init__(self, image, player, left, bottom, level):
+    def __init__(self, image, player, left, bottom, level, speed=2):
         super().__init__()
         self.image = image
         self.rect = self.image.get_rect()
@@ -10,7 +10,7 @@ class Alien(pygame.sprite.Sprite):
         self.movementY = 0
         self.isLookingLeft = False
         self.isLookingDown = False
-        self.speed = 2 #prędkość kosmity
+        self.speed = speed #prędkość kosmity
         self.player = player
         self.rect.left = left
         self.rect.bottom = bottom
