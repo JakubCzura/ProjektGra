@@ -18,7 +18,7 @@ class MainLevel(Level.Level):
                          ]
         
         for cor in platforms:
-            self.platforms.add(Platform.Platform(Resources.BORDER_LIST, *cor))
+            self.platforms.add(Platform.Platform(Resources.GROUND, *cor))
 
     def _CreateItems(self):
         karabinek = Item.Item(Resources.KARABINEK, 'karabinek', 170, 480)
