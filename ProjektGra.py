@@ -55,7 +55,7 @@ def PlayGame(gameMode='normal'):
     SpawnAlien = 10
     if gameMode == 'normal':
         SpawnAlien = 30
-    if gameMode == 'hard':
+    elif gameMode == 'hard':
         SpawnAlien = 5
     GameLoop = True #petla gry
     TimeToSpawnAlien = 0 
