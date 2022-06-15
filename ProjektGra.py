@@ -27,31 +27,57 @@ fps = 30 #liczba klatek na sekunde
 MusicKarabinki = Music.Music('strzały_z_karabinow.wav', -1)
 MusicKarabinki.PlayMusic()
 
-ListOfAliens = pygame.sprite.Group()
-ListOfPlayers = pygame.sprite.Group()
+#ListOfAliens = pygame.sprite.Group()
+#ListOfPlayers = pygame.sprite.Group()
 
-def AddAlienToList(alienSpeed):
-    leftOrRight = random.randint(0,1)
-    if leftOrRight == 0:
-        ListOfAliens.add(Alien.Alien(Resources.ALIEN_LEFT, Player, random.randint(0,100), random.randint(100,1100), MainLevel, alienSpeed))
-    else:
-        ListOfAliens.add(Alien.Alien(Resources.ALIEN_LEFT, Player, random.randint(1800,1900), random.randint(100,1100), MainLevel, alienSpeed))
+#def AddAlienToList(alienSpeed):
+#    leftOrRight = random.randint(0,1)
+#    if leftOrRight == 0:
+#        ListOfAliens.add(Alien.Alien(Resources.ALIEN_LEFT, Player, random.randint(0,100), random.randint(100,1100), MainLevel, alienSpeed))
+#    else:
+#        ListOfAliens.add(Alien.Alien(Resources.ALIEN_LEFT, Player, random.randint(1800,1900), random.randint(100,1100), MainLevel, alienSpeed))
 
 
-def AddPlayerToList():
-    ListOfPlayers.add(Player)
+#def AddPlayerToList():
+#    ListOfPlayers.add(Player)
 
-def UpdateAliens():
-    for Alien in ListOfAliens:
-        Alien.Update()
+#def UpdateAliens():
+#    for Alien in ListOfAliens:
+#        Alien.Update()
 
-def DrawAliens():
-    for Alien in ListOfAliens:
-        Alien.Draw(Screen)
+#def DrawAliens():
+#    for Alien in ListOfAliens:
+#        Alien.Draw(Screen)
 
-AddPlayerToList()
+#AddPlayerToList()
 
 def PlayGame(gameMode='normal'):   
+    ListOfAliens = pygame.sprite.Group()
+    ListOfPlayers = pygame.sprite.Group()
+
+    def AddAlienToList(alienSpeed):
+        leftOrRight = random.randint(0,1)
+        if leftOrRight == 0:
+            ListOfAliens.add(Alien.Alien(Resources.ALIEN_LEFT, Player, random.randint(0,100), random.randint(100,1100), MainLevel, alienSpeed))
+        else:
+            ListOfAliens.add(Alien.Alien(Resources.ALIEN_LEFT, Player, random.randint(1800,1900), random.randint(100,1100), MainLevel, alienSpeed))
+
+    def AddPlayerToList():
+        ListOfPlayers.add(Player)
+
+    def UpdateAliens():
+        for Alien in ListOfAliens:
+            Alien.Update()
+
+    def DrawAliens():
+        for Alien in ListOfAliens:
+            Alien.Draw(Screen)
+
+    AddPlayerToList()
+    
+
+
+    
     SpawnAlien = 10
     if gameMode == 'normal':
         SpawnAlien = 30
@@ -85,7 +111,7 @@ def PlayGame(gameMode='normal'):
         pygame.sprite.groupcollide(MainLevel.KarabinekBullets, ListOfAliens, True, True)
         if pygame.sprite.groupcollide(ListOfPlayers, ListOfAliens, True, True) != {}: #jesli zderzy się gracz i kosmita to gra się konczy
             GameLoop = False
-            pygame.quit() #koniec gry
+            #pygame.quit() #koniec gry
         
         UpdateAliens()
         Player.Update()    
