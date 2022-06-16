@@ -6,17 +6,15 @@ ScreenSize = width, height = 1920, 1080
 deepSkyBlue1 = pygame.color.THECOLORS['deepskyblue1']
 lightBlue = pygame.color.THECOLORS['lightblue']
 
-screen = pygame.display.set_mode(ScreenSize)
+screen = pygame.display.set_mode(ScreenSize) #okno gry
 
-imageDirectoryPath = 'images'
+imageDirectoryPath = 'images' #folder z grafik¹
 
-imageList = sorted(os.listdir(imageDirectoryPath))
-
-BACKGROUND = pygame.image.load(os.path.join(imageDirectoryPath, 'background.png')).convert()
+imageList = sorted(os.listdir(imageDirectoryPath)) #lista zdjêæ z folderu
 
 for file_name in imageList:
     image_name = file_name[:-4].upper()
-    globals()[image_name] = pygame.image.load(os.path.join(imageDirectoryPath, file_name)).convert_alpha(BACKGROUND)
+    globals()[image_name] = pygame.image.load(os.path.join(imageDirectoryPath, file_name)).convert_alpha() #obciêcie z nazwy zdjêcia ".png" i przekonwertowanie na odpowiedni format convert_alpha()
 
 
 PLAY_BUTTON = PLAY_BUTTON
