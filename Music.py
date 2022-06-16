@@ -7,8 +7,8 @@ class Music():
         mixer.init()
         self.sound = mixer.Sound('music/' + self.title)
 
-        #�eby muzyka gra�a w niesko�czono�� daje si� isInfinityPlaying = -1
-        #�eby muzyka raz si� odtworzy�a daje si� isInfinityPlaying = 0
+        #zeby muzyka grala w nieskonczonosc daje sie isInfinityPlaying  -1
+        #zeby muzyka grala raz daje sie isInfinityPlaying  0
     def PlayMusic(self):
         mixer.music.load('music/' + self.title)
         mixer.music.play(self.isInfinityPlaying)
