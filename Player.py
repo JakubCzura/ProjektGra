@@ -7,7 +7,7 @@ class Player(pygame.sprite.Sprite):
     def __init__(self, image):
         super().__init__()
         self.image = image
-        self.rect = self.image.get_rect()
+        self.rect = self.image.get_rect() #przetwarza zdjecie gracza na obiekt
         self.movementX = 0
         self.movementY = 0
         self.isLookingLeft = False
@@ -74,9 +74,9 @@ class Player(pygame.sprite.Sprite):
                 self.rect.bottom = platform.rect.top
                 if self.movementX == 0:
                     if self.isLookingLeft:
-                        self.image = Resources.KAPITAN_L
+                        self.image = Resources.KAPITAN_LEFT
                     else:
-                        self.image = Resources.KAPITAN_R
+                        self.image = Resources.KAPITAN_RIGHT
             if self.movementY < 0:
                 self.rect.top = platform.rect.bottom
             self.movementY = 0

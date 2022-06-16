@@ -1,6 +1,8 @@
 import Resources
 import Level, Platform, Item
 
+#klasa glownego poziomu na ktorym bezposrednio odbywa sie gra
+
 class MainLevel(Level.Level):
     def __init__(self, player):
         super().__init__(player)

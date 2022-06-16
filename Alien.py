@@ -9,7 +9,6 @@ class Alien(pygame.sprite.Sprite):
         self.movementX = 0
         self.movementY = 0
         self.isLookingLeft = False
-        self.isLookingDown = False
         self.speed = speed #prędkość kosmity
         self.player = player
         self.rect.left = left
@@ -21,11 +20,9 @@ class Alien(pygame.sprite.Sprite):
 
     def MoveUp(self):
         self.movementY = -self.speed
-        self.isLookingDown = False
 
     def MoveDown(self):
         self.movementY = self.speed
-        self.isLookingDown = True
 
     def MoveRight(self):
         self.movementX = self.speed
@@ -77,7 +74,6 @@ class Alien(pygame.sprite.Sprite):
             if self.movementY < 0:
                 self.rect.top = platform.rect.bottom
             self.movementY = 0
-   
 
     def _Move(self, image):
         self.image = image
