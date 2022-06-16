@@ -3,7 +3,7 @@ import pygame
 class Bullet(pygame.sprite.Sprite):
     def __init__(self, imageList, rotatedLeft, coordinateX, coordinateY, weapon):
         super().__init__()
-        self.image = imageList[1] if rotatedLeft else imageList[0] #zdjêcie pocisku lecacego w lewo lub prawo
+        self.image = imageList[1] if rotatedLeft else imageList[0] #zdjï¿½cie pocisku lecacego w lewo lub prawo
         self.rect = self.image.get_rect() #get_rect() zwraca obiekt z uzytego obrazka
         self.rect.center = [coordinateX, coordinateY] #wspolrzedne X i Y pocisku
         self.weapon = weapon
