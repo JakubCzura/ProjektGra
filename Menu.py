@@ -1,13 +1,13 @@
 import pygame
 
 class Menu():
-    def __init__(self, x, y, image):
-        self.x = x
-        self.y = y
+    def __init__(self, coordinateX, coordinateY, image):
+        self.coordinateX = coordinateX
+        self.coordinateY = coordinateY
         self.image = pygame.image.load(f"images/{image}.png")
  
     def Draw(self, screen):      
-        screen.blit(self.image, (self.x, self.y))
+        screen.blit(self.image, (self.coordinateX, self.coordinateY))
 
 
 
