@@ -4,10 +4,10 @@ import Level, Ground, Item
 class MainLevel(Level.Level):
     def __init__(self, player):
         super().__init__(player)
-        self._CreatePlatforms()
+        self._CreateGroundList()
         self._CreateItems()
 
-    def _CreatePlatforms(self):
+    def _CreateGroundList(self):
         groundList = [[70, 70, 150, 1010], #kafelek kapitana
                          [70, 70, 150, 520],
                          [70, 70, 520, 530],

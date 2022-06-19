@@ -32,7 +32,7 @@ class Player(pygame.sprite.Sprite):
         self.movementX = -self.speed
         self.isLookingLeft = True
 
-    def shoot(self):
+    def Shoot(self):
         if self.weapon == 'dzida_laserowa':
             MusicDzida = Music.Music('strzał_z_dzidy.wav', 0)
             MusicDzida.PlayShoot()
@@ -56,35 +56,33 @@ class Player(pygame.sprite.Sprite):
             self._Move(Resources.KAPITAN_LEFT)
         
         #kolizja z przeszkodami z boku
-        collidingPlatforms = pygame.sprite.spritecollide(
-            self, self.level.groundList,False)
-        for platform in collidingPlatforms:
+        collidingGroundList = pygame.sprite.spritecollide(self, self.level.groundList,False)
+        for ground in collidingGroundList:
             if self.movementX > 0:
-                self.rect.right = platform.rect.left
+                self.rect.right = ground.rect.left
             if self.movementX < 0:
-                self.rect.left = platform.rect.right
+                self.rect.left = ground.rect.right
 
         # ruch w pionie
         self.rect.y += self.movementY
 
         #kolizja z przeszkodami z góry
-        collidingPlatforms = pygame.sprite.spritecollide(self, self.level.groundList,False)
-        for platform in collidingPlatforms:
+        collidingGroundList = pygame.sprite.spritecollide(self, self.level.groundList,False)
+        for ground in collidingGroundList:
             if self.movementY > 0:
-                self.rect.bottom = platform.rect.top
+                self.rect.bottom = ground.rect.top
                 if self.movementX == 0:
                     if self.isLookingLeft:
                         self.image = Resources.KAPITAN_L
                     else:
                         self.image = Resources.KAPITAN_R
             if self.movementY < 0:
-                self.rect.top = platform.rect.bottom
+                self.rect.top = ground.rect.bottom
             self.movementY = 0
 
 
         # podniesienie broni
         weapons = pygame.sprite.spritecollide(self, self.level.ListOfWeapons, False)
-
         for weapon in weapons:
             if weapon.name == 'karabinek':
                 self.weapon = 'karabinek'
@@ -109,7 +107,7 @@ class Player(pygame.sprite.Sprite):
             if event.key == pygame.K_DOWN:
                 self.MoveDown()
             if event.key == pygame.K_SPACE:
-                self.shoot()           
+                self.Shoot()           
 
     def _Move(self, image):
         self.image = image
