@@ -5,11 +5,10 @@ class Alien(pygame.sprite.Sprite):
     def __init__(self, image, player, left, bottom, level, speed=2):
         super().__init__()
         self.image = image
-        self.rect = self.image.get_rect()
+        self.rect = self.image.get_rect() #przeksztalca obrazek w klase
         self.movementX = 0
         self.movementY = 0
         self.isLookingLeft = False
-        self.isLookingDown = False
         self.speed = speed #prędkość kosmity
         self.player = player
         self.rect.left = left
@@ -21,11 +20,9 @@ class Alien(pygame.sprite.Sprite):
 
     def MoveUp(self):
         self.movementY = -self.speed
-        self.isLookingDown = False
 
     def MoveDown(self):
         self.movementY = self.speed
-        self.isLookingDown = True
 
     def MoveRight(self):
         self.movementX = self.speed
@@ -36,13 +33,13 @@ class Alien(pygame.sprite.Sprite):
         self.isLookingLeft = True
 
     def Update(self):
-        if self.player.rect.x < self.rect.x:
+        if self.player.rect.x < self.rect.x: #przyblizanie sie do gracza po osi X
             self.MoveLeft()
             self.rect.x -= self.speed
         else:
             self.MoveRight()
             self.rect.x += self.speed
-        if self.player.rect.y < self.rect.y:
+        if self.player.rect.y < self.rect.y:  #przyblizanie sie do gracza po osi Y
             self.MoveDown()
             self.rect.y -= self.speed
         else:
@@ -50,32 +47,32 @@ class Alien(pygame.sprite.Sprite):
             self.rect.y += self.speed
 
         #aniamcja kosmity
-        if self.movementX > 0:
+        if self.movementX >= 0:
             self._Move(Resources.ALIEN_RIGHT)
-        if self.movementX < 0:
+        else: 
             self._Move(Resources.ALIEN_LEFT)
         
 
         #kolizja z bocznymi krawędziami
-        collidingPlatforms = pygame.sprite.spritecollide(self, self.level.platforms,False)
-        for platform in collidingPlatforms:
+        collidingGround = pygame.sprite.spritecollide(self, self.level.groundList,False)
+        for ground in collidingGround:
             if self.movementX > 0:
-                self.rect.right = platform.rect.left
+                self.rect.right = ground.rect.left
             if self.movementX < 0:
-                self.rect.left = platform.rect.right
+                self.rect.left = ground.rect.right
 
         #kolizja z góry i dołu
-        collidingPlatforms = pygame.sprite.spritecollide(self, self.level.platforms,False)
-        for platform in collidingPlatforms:
+        collidingGround = pygame.sprite.spritecollide(self, self.level.groundList,False)
+        for ground in collidingGround:
             if self.movementY > 0:
-                self.rect.bottom = platform.rect.top
+                self.rect.bottom = ground.rect.top
                 if self.movementX == 0:
                     if self.isLookingLeft:
                         self.image = Resources.ALIEN_LEFT
                     else:
                         self.image = Resources.ALIEN_RIGHT
             if self.movementY < 0:
-                self.rect.top = platform.rect.bottom
+                self.rect.top = ground.rect.bottom
             self.movementY = 0
    
 

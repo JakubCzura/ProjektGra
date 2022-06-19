@@ -8,15 +8,15 @@ class MainLevel(Level.Level):
         self._CreateItems()
 
     def _CreatePlatforms(self):
-        platforms = [[70, 70, 150, 1010], #kafelek kapitana
+        groundList = [[70, 70, 150, 1010], #kafelek kapitana
                          [70, 70, 150, 520],
                          [70, 70, 520, 530],
                          [70, 70, 1050, 520],
                          [70, 70, 1000, 1020]
                          ]
         
-        for platform in platforms:
-            self.platforms.add(Platform.Platform(Resources.GROUND, *platform))
+        for ground in groundList:
+            self.groundList.add(Platform.Platform(Resources.GROUND, *ground))
 
     def _CreateItems(self):
         karabinek = Item.Item(Resources.KARABINEK, 'karabinek', 170, 480)

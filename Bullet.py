@@ -1,17 +1,17 @@
 import pygame
 
 class Bullet(pygame.sprite.Sprite):
-    def __init__(self, image_list, rotate_left,  pos_center_x, pos_center_y, weapon):
+    def __init__(self, image_list, isLeftRotated,  coordinateX, coordinateY, weapon):
         super().__init__()
-        self.image = image_list[1] if rotate_left else image_list[0]
+        self.image = image_list[1] if isLeftRotated else image_list[0]
         self.rect = self.image.get_rect()
-        self.rect.center = [pos_center_x, pos_center_y]
+        self.rect.center = [coordinateX, coordinateY] #ustawianie poczatkowego polozenia pocisku
         self.weapon = weapon
-        self.movement_x = -10 if rotate_left else 10
+        self.movementX = -10 if isLeftRotated else 10
         if weapon=='karabinek':
-            self.movement_x = -20 if rotate_left else 20
+            self.movementX = -20 if isLeftRotated else 20
         if weapon=='dzida_laserowa':
-            self.movement_x = -30 if rotate_left else 30
+            self.movementX = -30 if isLeftRotated else 30
 
     def update(self):
-        self.rect.x += self.movement_x
+        self.rect.x += self.movementX

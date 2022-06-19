@@ -50,14 +50,14 @@ class Player(pygame.sprite.Sprite):
         self.rect.x += self.movementX
 
         # aniamcja obrotu w lewo i prawo
-        if self.movementX > 0:
+        if self.movementX >= 0:
             self._Move(Resources.KAPITAN_RIGHT)
-        if self.movementX < 0:
+        else:
             self._Move(Resources.KAPITAN_LEFT)
         
         #kolizja z przeszkodami z boku
         collidingPlatforms = pygame.sprite.spritecollide(
-            self, self.level.platforms,False)
+            self, self.level.groundList,False)
         for platform in collidingPlatforms:
             if self.movementX > 0:
                 self.rect.right = platform.rect.left
@@ -68,7 +68,7 @@ class Player(pygame.sprite.Sprite):
         self.rect.y += self.movementY
 
         #kolizja z przeszkodami z góry
-        collidingPlatforms = pygame.sprite.spritecollide(self, self.level.platforms,False)
+        collidingPlatforms = pygame.sprite.spritecollide(self, self.level.groundList,False)
         for platform in collidingPlatforms:
             if self.movementY > 0:
                 self.rect.bottom = platform.rect.top
