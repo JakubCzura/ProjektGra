@@ -54,8 +54,8 @@ class Level:
     def _MoveWorld(self, coordinateX):
         self.worldCoordinateX += coordinateX
 
-        for platform in self.groundList:
-            platform.rect.x += coordinateX
+        for ground in self.groundList:
+            ground.rect.x += coordinateX
 
         for weapon in self.ListOfWeapons:
             weapon.rect.x += coordinateX
@@ -69,8 +69,8 @@ class Level:
     def _MoveWorldY(self, coordinateY):
         self.worldCoordinateY += coordinateY
        
-        for platform in self.groundList:
-            platform.rect.y += coordinateY
+        for ground in self.groundList:
+            ground.rect.y += coordinateY
       
         for weapon in self.ListOfWeapons:
             weapon.rect.y += coordinateY

@@ -29,7 +29,7 @@
     <Compile Include="Level.py" />
     <Compile Include="MainLevel.py" />
     <Compile Include="Music.py" />
-    <Compile Include="Platform.py" />
+    <Compile Include="Ground.py" />
     <Compile Include="Player.py" />
     <Compile Include="ProjektGra.py" />
   </ItemGroup>

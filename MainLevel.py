@@ -1,5 +1,5 @@
 import Resources
-import Level, Platform, Item
+import Level, Ground, Item
 
 class MainLevel(Level.Level):
     def __init__(self, player):
@@ -16,7 +16,7 @@ class MainLevel(Level.Level):
                          ]
         
         for ground in groundList:
-            self.groundList.add(Platform.Platform(Resources.GROUND, *ground))
+            self.groundList.add(Ground.Ground(Resources.GROUND, *ground))
 
     def _CreateItems(self):
         karabinek = Item.Item(Resources.KARABINEK, 'karabinek', 170, 480)

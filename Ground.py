@@ -1,6 +1,6 @@
 import pygame
 
-class Platform(pygame.sprite.Sprite):
+class Ground(pygame.sprite.Sprite):
     def __init__(self, image, width, height, rectX, rectY):
         super().__init__()
         self.image = image
